@@ -1,0 +1,17 @@
+In file included from photon.cpp(1):
+photon.h(16): catastrophic error: cannot open source file "hydro_info_header_h"
+  #include "hydro_info_header_h"
+                                ^
+
+compilation aborted for photon.cpp (code 4)
+In file included from rates.cpp(1):
+photon.h(16): catastrophic error: cannot open source file "hydro_info_header_h"
+  #include "hydro_info_header_h"
+                                ^
+
+compilation aborted for rates.cpp (code 4)
+/var/spool/slurmd/job10791967/slurm_script: line 11: ./a.out: No such file or directory
+
+real	0m0.002s
+user	0m0.001s
+sys	0m0.000s

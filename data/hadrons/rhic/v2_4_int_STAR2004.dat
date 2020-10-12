@@ -1,0 +1,11 @@
+#http://arxiv.org/pdf/nucl-ex/0409033.pdf
+#https://drupal.star.bnl.gov/STAR/files/starpublications/48/Figure_29a.html
+#v_{2}{4}
+#centrality bin 	v2(%) 	v2Err
+2(60-70%) 65	5.68 	0.35
+3(50-60%) 55	6.18 	0.1
+4(40-50%) 45	6.43 	0.045
+5(30-40%) 35	6.33 	0.026
+6(20-30%) 25	5.66 	0.02
+7(10-20%) 15	4.27 	0.022
+8(5-10%) 7.5	2.53 	0.066

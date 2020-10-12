@@ -1,0 +1,11 @@
+#https://drupal.star.bnl.gov/STAR/files/starpublications/108/data.html
+#http://arxiv.org/pdf/0801.3466.pdf
+#pT cuts seem to be  0.15 < pT < 2.0 GeV/c
+#Collision Cross Section	v2{4}(%)
+65 	0.0581859	 0.000947424
+55 	0.0617547	 0.000318834
+45 	0.0655523	 0.000144613
+35 	0.0630763	 0.0000873136
+25 	0.0563609	 0.0000674778
+15 	0.0425772	 0.0000805643
+7.5	0.0269707	 0.000241449

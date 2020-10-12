@@ -1,0 +1,22 @@
+#ARXIV:1105.3865
+#http://hepdata.cedar.ac.uk/view/ins900651/d26/plain.txt
+#Path: /HepData/8437/d26-x1-y1
+#v4{SP,Deltaeta=1.0} (red open squares)
+#Location: F 3b
+#ABS(DELTA(ETA)) : > 1.0
+#RE : PB PB --> CHARGED X
+#SQRT(S)/NUCLEON : 2760.0 GeV
+#x : PT IN GEV
+#y : v4{SP,Deltaeta=1.0} (red open squares)
+#x	y	dy+
+0.3	0.002042	0.00146
+0.5	0.002556	0.001624
+0.7	0.009693	0.00193
+0.95	0.013286	0.002021
+1.25	0.01678	0.002737
+1.55	0.027865	0.003717
+1.85	0.031797	0.005042
+2.3	0.051101	0.005564
+2.9	0.060164	0.01016
+3.65	0.095985	0.016472
+4.55	0.094607	0.035083

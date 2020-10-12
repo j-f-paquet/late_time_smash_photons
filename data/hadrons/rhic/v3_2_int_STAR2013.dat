@@ -1,0 +1,13 @@
+#http://arxiv.org/pdf/1301.2187.pdf
+#https://drupal.star.bnl.gov/STAR/files/starpublications/199/data.html
+#integrated for 0.15<pT <2.0 GeV/c and −1.0<η<1.0
+#cent (%)	V3{2,eta>1}	error
+2.5	0.0138	0.0001
+7.5	0.0157	0.0001
+15	0.0175	0.0001
+25	0.0183	0.0001
+35	0.0187	0.0002
+45	0.0181	0.0003
+55	0.0163	0.0006
+65	0.0109	0.0016
+75	0.009	0.004

@@ -1,0 +1,12 @@
+photon.cpp(533): warning #3180: unrecognized OpenMP #pragma
+  		#pragma omp parallel for collapse(3) shared(discSpectra)
+  		        ^
+
+Tabulating rate rate_hg_pion_brem_ideal_Rapp_fit_tabulated
+Tabulating rate rate_hg_ideal_Turbide_fit_noPiPi_tabulated
+Tabulating rate rate_thermal_ideal
+Computing thermal photons...
+
+real	3537m38.744s
+user	3528m19.219s
+sys	0m7.520s

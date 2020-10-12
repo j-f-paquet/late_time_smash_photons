@@ -1,0 +1,5 @@
+photon.cpp(533): warning #3180: unrecognized OpenMP #pragma
+  		#pragma omp parallel for collapse(3) shared(discSpectra)
+  		        ^
+
+slurmstepd: error: *** JOB 10770325 ON blg7216 CANCELLED AT 2020-08-21T00:56:19 DUE TO TIME LIMIT ***
