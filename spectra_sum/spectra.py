@@ -11,27 +11,10 @@ import matplotlib.ticker as mtick
 import os.path
 #from scipy.interpolate import InterpolatedUnivariateSpline
 import scipy.interpolate
-
-
-###########################################################################
-########################## Plotting calculations ##########################
-###########################################################################
-
-font = {'family' : 'URW Gothic',
-        'weight' : 'bold',
-        'size'   : 16}
-
-plt.rc('font', **font)
-#
-#legend_params={
-#'framealpha' : 1,
-#'fontsize':14, 
-#'handletextpad':0.3, 
-#'labelspacing':0.1, 
-#'borderaxespad':0.1
-#}
-#
-#plt.rc('legend', **legend_params)
+import matplotlib.gridspec as gridspec
+import sys
+sys.path.append(os.path.dirname(os.path.abspath(__file__)) + '/..')
+import common_plotting
 
 ######################################
 ############ Total rate ##############
@@ -70,31 +53,112 @@ raw=np.loadtxt("../calcs/photons/averaged_hydro_calcs/combined/average_sp_hydro_
 pT_above_plus_hydro100, dN_music_above_plus_hydro100, *rest = raw.T
 
 
+# Interpolation for ratio
+music_above_interpolation = scipy.interpolate.interp1d(pT_above, np.log(dN_music_above), kind='linear')
+music_above_rebin_smash = np.exp(music_above_interpolation(pT_above_plus_smash[1:14]))
+music_above_rebin_music100 = np.exp(music_above_interpolation(pT_above_plus_hydro100[:14]))
+music_above_rebin_music140 = np.exp(music_above_interpolation(pT_above_plus_hydro140[:14]))
+music_above_rebin_music120 = np.exp(music_above_interpolation(pT_above_plus_hydro120[:14]))
+music_above_rebin_music120150 = np.exp(music_above_interpolation(pT_above_plus_hydro120[:15]))
 
-plt.figure()
+
+####################################
+# Ration plot with single line proxy
+####################################
+
+gs = gridspec.GridSpec(10,1)
+
+common_plotting.load_plotting_style()
+plt.subplot(gs[:7 , :])
 plt.xscale('linear')
 plt.yscale('log')
-plt.xlim(0,4)
-plt.ylim(1e-5,1e2)
-plt.xlabel(r'$p_T$ $(GeV)$')
-plt.ylabel(r'$P^0 d^3{N_\gamma}/d3p$ $(GeV^{-2})$')
+plt.xticks([])
+plt.xlim(0,2.5)
+plt.ylim(8e-4,1e1)
+plt.ylabel(r'1/(2$\pi$p$_\mathrm{T}$) dN$_\gamma$/dp$_\mathrm{T} |_{y =0}$ [Gev$^{-2}$]      ', fontsize=14)
 
-plt.text(0.2, 0.9, 'Points: SMASH\nLight bands:    Hydro, 100<T<150 MeV\nDarker bands: Hydro, 120<T<150 MeV', horizontalalignment='left', verticalalignment='center', transform=plt.axes().transAxes, fontsize=14)
+plt.plot(pT_above, dN_music_above, label=r"MUSIC$_\mathsf{QGP}$", ls = ':', color = 'C1')
+plt.plot(pT_above_plus_hydro120, dN_music_above_plus_hydro120, ls = '-', label = 'MUSIC$_\mathsf{QGP}$ + MUSIC$_\mathsf{HRG}$', color = 'C0')
+plt.plot(pT_above_plus_smash, dN_music_above_plus_smash, ls = '--', label='MUSIC$_\mathsf{QGP}$ + ' + 'SMASH', color = 'C2')
+plt.legend(frameon=False)
 
-plt.plot(pT_above, dN_music_above,"-", color='black', label=r"Hydro (T>150 MeV)") 
+plt.subplot(gs[7:, :])
+plt.xlim(0,2.5)
+plt.xlabel(r'p$_\mathsf{T}$ [GeV]')
 
-plt.plot(pT_above_plus_smash, dN_music_above_plus_smash,"D", color='green', label=r"Hydro (T>150 MeV) + SMASH") 
-#ax3.fill_between(x, y1, y2)
-#plt.errorbar(x=pT_above_plus_smash, y=::3], yerr=dN_brem_err[::3], fmt='D', color='red') 
-#plt.errorbar(x=pT_smash[::3], y=dN_22[::3], yerr=dN_22_err[::3], fmt='D', color='blue') 
+plt.plot(pT_above_plus_hydro120[:15], dN_music_above_plus_hydro120[:15] / music_above_rebin_music120150, label = '(MUSIC$_\mathsf{QGP}$+ MUSIC$_\mathsf{HRG}$) / MUSIC$_\mathsf{QGP}$', ls = '-', color = 'C0')
+plt.plot(pT_above_plus_smash[1:14], dN_music_above_plus_smash[1:14] / music_above_rebin_smash, label = '(MUSIC$_\mathsf{QGP}$ + SMASH) / MUSIC$_\mathsf{QGP}$', ls = '--', color = 'C2')
+plt.axhline(1.0, ls = ':', color = 'C1')
 
-plt.fill_between(pT_above_plus_hydro100, dN_music_above_plus_hydro140, dN_music_above_plus_hydro100, color='green', alpha=0.4) 
-plt.fill_between(pT_above_plus_hydro100, dN_music_above_plus_hydro140, dN_music_above_plus_hydro120, color='green', alpha=0.3) 
-
-plt.legend(loc='lower left', fontsize=10)
-plt.tight_layout()
-plt.savefig("spectra_photon_sum.pdf")
-plt.show()
+plt.legend(frameon=False)
+plt.tight_layout(h_pad=-0.2)
+plt.savefig("spectra_photon_sum_single_line_proxy.pdf")
+plt.close()
 
 
+####################################
+# Ration plot 100 < T < 150
+####################################
 
+gs = gridspec.GridSpec(10,1)
+
+common_plotting.load_plotting_style()
+plt.subplot(gs[:7 , :])
+plt.xscale('linear')
+plt.yscale('log')
+plt.xticks([])
+plt.xlim(0,2.5)
+plt.ylim(8e-4,1e1)
+plt.ylabel(r'1/(2$\pi$ p$_\mathrm{T}$) dN$_\gamma$/dp$_\mathrm{T} |_{y =0}$ [Gev$^{-2}$]       ', fontsize = 14)
+
+plt.plot(pT_above, dN_music_above, label=r"MUSIC$_\mathsf{QGP}$", ls = ':', color = 'C1')
+plt.plot(pT_above_plus_smash, dN_music_above_plus_smash, ls = '--', label='MUSIC$_\mathsf{QGP}$ + ' + 'SMASH', color = 'C2')
+plt.fill_between(pT_above_plus_hydro100, dN_music_above_plus_hydro140, dN_music_above_plus_hydro100, alpha = 0.8, label = 'MUSIC$_\mathsf{QGP}$ + MUSIC$_\mathsf{HRG}$\n' + '100 MeV < T < 150 MeV', lw = 0, color='C0')
+plt.legend(frameon=False)
+
+plt.subplot(gs[7:, :])
+plt.xlim(0,2.5)
+plt.xlabel(r'p$_\mathsf{T}$ [GeV]')
+
+plt.plot(pT_above_plus_smash[1:14], dN_music_above_plus_smash[1:14] / music_above_rebin_smash, label = '(MUSIC$_\mathsf{QGP}$ + SMASH) / MUSIC$_\mathsf{QGP}$', ls = '--', color = 'C2')
+plt.axhline(1.0, ls = ':', color = 'C1')
+plt.fill_between(pT_above_plus_hydro100[:14], dN_music_above_plus_hydro100[:14] / music_above_rebin_music100, dN_music_above_plus_hydro140[:14] / music_above_rebin_music140, label = '(MUSIC$_\mathsf{QGP}$+ MUSIC$_\mathsf{HRG}$) / MUSIC$_\mathsf{QGP}$', alpha = 0.8, color = 'C0', lw = 0)
+
+plt.legend(frameon=False)
+plt.tight_layout(h_pad=-0.2)
+plt.savefig("spectra_photon_sum_long_range.pdf")
+plt.close()
+
+
+####################################
+# Ration plot 100 < T < 150
+####################################
+
+gs = gridspec.GridSpec(10,1)
+
+common_plotting.load_plotting_style()
+plt.subplot(gs[:7 , :])
+plt.xscale('linear')
+plt.yscale('log')
+plt.xticks([])
+plt.xlim(0,2.5)
+plt.ylim(8e-4,1e1)
+plt.ylabel(r'1/(2$\pi$ p$_\mathrm{T}$) dN$_\gamma$/dp$_\mathrm{T} |_{y =0}$ [Gev$^{-2}$]       ', fontsize = 14)
+
+plt.plot(pT_above, dN_music_above, label=r"MUSIC$_\mathsf{QGP}$", ls = ':', color = 'C1')
+plt.plot(pT_above_plus_smash, dN_music_above_plus_smash, ls = '--', label='MUSIC$_\mathsf{QGP}$ + ' + 'SMASH', color = 'C2')
+plt.fill_between(pT_above_plus_hydro120, dN_music_above_plus_hydro140, dN_music_above_plus_hydro120, alpha = 0.8, label = 'MUSIC$_\mathsf{QGP}$ + MUSIC$_\mathsf{HRG}$\n' + '120 MeV < T < 150 MeV', lw = 0, color='C0')
+plt.legend(fontsize=10, frameon=False)
+
+plt.subplot(gs[7:, :])
+plt.xlim(0,2.5)
+plt.xlabel(r'p$_\mathsf{T}$ [GeV]')
+
+plt.plot(pT_above_plus_smash[1:14], dN_music_above_plus_smash[1:14] / music_above_rebin_smash, label = '(MUSIC$_\mathsf{QGP}$ + SMASH) / MUSIC$_\mathsf{QGP}$', ls = '--', color = 'C2')
+plt.axhline(1.0, ls = ':', color = 'C1')
+plt.fill_between(pT_above_plus_hydro120[:14], dN_music_above_plus_hydro120[:14] / music_above_rebin_music120, dN_music_above_plus_hydro140[:14] / music_above_rebin_music140, label = '(MUSIC$_\mathsf{QGP}$+ MUSIC$_\mathsf{HRG}$) / MUSIC$_\mathsf{QGP}$', alpha = 0.8, color = 'C0', lw = 0)
+
+plt.legend(frameon=False)
+plt.tight_layout(h_pad=-0.2)
+plt.savefig("spectra_photon_sum_short_range.pdf")
+plt.close()

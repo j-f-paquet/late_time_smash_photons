@@ -11,27 +11,9 @@ import matplotlib.ticker as mtick
 import os.path
 #from scipy.interpolate import InterpolatedUnivariateSpline
 import scipy.interpolate
-
-
-###########################################################################
-########################## Plotting calculations ##########################
-###########################################################################
-
-font = {'family' : 'URW Gothic',
-        'weight' : 'bold',
-        'size'   : 16}
-
-plt.rc('font', **font)
-#
-#legend_params={
-#'framealpha' : 1,
-#'fontsize':14, 
-#'handletextpad':0.3, 
-#'labelspacing':0.1, 
-#'borderaxespad':0.1
-#}
-#
-#plt.rc('legend', **legend_params)
+import sys
+sys.path.append(os.path.dirname(os.path.abspath(__file__)) + '/..')
+import common_plotting
 
 ######################################
 ############ Total rate ##############
@@ -80,71 +62,101 @@ pT_music, dN_music_100_150_brem, v1_music_100_150_brem, v2_music_100_150_brem, *
 
 plot_dict={
 'late_tot':{
+'name' : 'Total',
 'smash_calcs':[pT_smash,v2_tot,v2_tot_err],
-'music_calcs':[pT_music, v2_music_140_150_tot, v2_music_100_150_tot],
+'music_calcs_short':[pT_music, v2_music_140_150_tot, v2_music_120_150_tot],
+'music_calcs_long':[pT_music, v2_music_140_150_tot, v2_music_100_150_tot],
 'label':r"$\pi \pi \to \pi \pi \gamma$ & $\pi \rho \to \pi \gamma$",
 'plot_text':"Photons produced\nafter particlization\n"r"$\pi \pi \to \pi \pi \gamma$ & $\pi \rho \to \pi \gamma$",
-'plot_text_position':(0.55, 0.12)
+'plot_text_position':(0.55, 0.12),
+'xloc_text' : 0.85
 },
 'late_22':{
+'name' : '2$\leftrightarrow$2 Scatterings',
 'smash_calcs':[pT_smash_22,v2_22,v2_err_22],
-'music_calcs':[pT_music, v2_music_140_150_22, v2_music_100_150_22],
+'music_calcs_short':[pT_music, v2_music_140_150_22, v2_music_120_150_22],
+'music_calcs_long':[pT_music, v2_music_140_150_22, v2_music_100_150_22],
 'label':r"$\pi \rho \to \pi \gamma$",
 'plot_text':"Photons produced\nafter particlization\n"r"$\pi \rho \to \pi \gamma$",
-'plot_text_position':(0.55, 0.12)
+'plot_text_position':(0.55, 0.12),
+'xloc_text' : 0.67
 },
 'late_brem':{
+'name' : 'Bremsstrahlung',
 'smash_calcs':[pT_smash_brem,v2_brem,v2_err_brem],
-'music_calcs':[pT_music, v2_music_140_150_brem, v2_music_100_150_brem],
+'music_calcs_short':[pT_music, v2_music_140_150_brem, v2_music_120_150_brem],
+'music_calcs_long':[pT_music, v2_music_140_150_brem, v2_music_100_150_brem],
 'label':r"$\pi \pi \to \pi \pi \gamma$",
 'plot_text':"Photons produced\nafter particlization\n"r"$\pi \pi \to \pi \pi \gamma$",
-'plot_text_position':(0.55, 0.88)
+'plot_text_position':(0.55, 0.88),
+'xloc_text' : 0.68
 },
 }
-#pT_smash_22, v2_22, v2_err_22 = raw.T
-#raw=np.loadtxt("smash_calcs/SP_v2_photons_Brems.txt")
-#pT_smash_brem, v2_brem, v2_err_brem = raw.T
+
+#############################
+# Single line plot with proxy
+#############################
 
 for filelabel, tmp_dict in plot_dict.items():
 
+    common_plotting.load_plotting_style()
     plt.figure()
     plt.xscale('linear')
     plt.yscale('linear')
-    plt.xlim(0,4)
-    plt.ylim(0,0.25)
-    plt.xlabel(r'$p_T$ $(GeV)$')
-    plt.ylabel(r'$v_2^{\gamma}\{SP\}$')
+    plt.xlim(0,2.5)
+    plt.ylim(-1,25.0)
+    plt.xlabel(r'p$_\mathsf{T}$ [GeV]')
+    plt.ylabel(r'v$_2^{\gamma, \mathsf{SP}}$ [%]')
 
-    #plt.text(0.2, 0.9, 'Points: SMASH\nLight bands:    Hydro, 100<T<150 MeV\nDarker bands: Hydro, 120<T<150 MeV', horizontalalignment='left', verticalalignment='center', transform=plt.axes().transAxes, fontsize=14)
-
-    #plt.hlines(psi2_h, 0, 4, color='', linestyle='', label='0
-
-    #pT_smash, v2_tot, v2_tot_err = raw.T
-    #pT_smash_22, v2_tot_22, v2_tot_err_22 = raw.T
-    #pT_smash_brem, v2_tot_brem, v2_tot_err_brem = raw.T
-
+    #SMASH
     smash_calc=tmp_dict['smash_calcs']
+    plt.plot(smash_calc[0], 100.0 * smash_calc[1], color = 'C2', label = 'SMASH', ls = '--')
+    plt.fill_between(smash_calc[0], 100.0 * (smash_calc[1] - smash_calc[2]), 100.0 * (smash_calc[1] + smash_calc[2]), alpha = 0.5, color = 'C2', lw = 0)
 
-    plt.errorbar(x=smash_calc[0], y=smash_calc[1], yerr=smash_calc[2], fmt='D', color='red', label="SMASH") 
-
-    #ax3.fill_between(x, y1, y2)
-    #plt.errorbar(x=pT_smash[::3], y=dN_brem[::3], yerr=dN_brem_err[::3], fmt='D', color='red') 
-    #plt.errorbar(x=pT_smash[::3], y=dN_22[::3], yerr=dN_22_err[::3], fmt='D', color='blue') 
-    #
-    music_calc=tmp_dict['music_calcs']
+    # MUSIC
+    music_calc=tmp_dict['music_calcs_short']
     label=tmp_dict['label']
-    plt.fill_between(music_calc[0], music_calc[1], music_calc[2], color='red', alpha=0.3, label=r"Hydrodynamics") #r"$\pi \pi \to \pi \pi \gamma$") 
-    #plt.fill_between(pT_music, dN_music_140_150_22, dN_music_100_150_22, color='blue', alpha=0.3, label=r"$\pi \rho \to \pi \gamma$") 
-    #
-    #plt.fill_between(pT_music, dN_music_140_150_brem, dN_music_120_150_brem, color='red', alpha=0.4) 
-    #plt.fill_between(pT_music, dN_music_140_150_22, dN_music_120_150_22, color='blue', alpha=0.4) 
+    plt.plot(music_calc[0], 100.0 * music_calc[2], color = 'C0', label = 'MUSIC$_\mathsf{HRG}$' )
 
-    plt.text(tmp_dict['plot_text_position'][0], tmp_dict['plot_text_position'][1], tmp_dict['plot_text'], horizontalalignment='left', verticalalignment='center', transform=plt.axes().transAxes, fontsize=13)
-
-    plt.legend(loc='upper left', fontsize=14)
+    plt.figtext(tmp_dict['xloc_text'], 0.9, tmp_dict['name'], fontweight = 'bold')
+    plt.legend(frameon = False, loc = 'upper left')
     plt.tight_layout()
-    plt.savefig("v2_"+filelabel+".pdf")
-    plt.show()
+    plt.savefig("v2_"+filelabel+"_single-line_proxy.pdf")
+    plt.close()
 
 
+#############################
+# with bands
+#############################
 
+for filelabel, tmp_dict in plot_dict.items():
+
+    common_plotting.load_plotting_style()
+    plt.figure()
+    plt.xscale('linear')
+    plt.yscale('linear')
+    plt.xlim(0,2.5)
+    plt.ylim(-1,25.0)
+    plt.xlabel(r'p$_\mathsf{T}$ [GeV]')
+    plt.ylabel(r'v$_2^{\gamma, \mathsf{SP}}$ [%]')
+
+    # SMASH
+    smash_calc=tmp_dict['smash_calcs']
+    plt.plot(smash_calc[0], 100.0 * smash_calc[1], color = 'C2', label = 'SMASH', ls = '-')
+    plt.fill_between(smash_calc[0], 100.0 * (smash_calc[1] - smash_calc[2]), 100.0 * (smash_calc[1] + smash_calc[2]), alpha = 0.5, color = 'C2', lw = 0)
+
+    # MUSIC long
+    music_calc=tmp_dict['music_calcs_long']
+    label=tmp_dict['label']
+    plt.fill_between(music_calc[0], 100.0 * music_calc[1], 100.0 * music_calc[2], alpha=0.7, color = 'C1', label = 'MUSIC$_\mathsf{HRG}$: 100 MeV < T < 150 MeV', lw = 0)
+
+    # MUSIC short
+    music_calc=tmp_dict['music_calcs_short']
+    label=tmp_dict['label']
+    plt.fill_between(music_calc[0], 100.0 * music_calc[1], 100.0 * music_calc[2], alpha=0.7, color = 'C0', label = 'MUSIC$_\mathsf{HRG}$: 120 MeV < T < 150 MeV', lw = 0)
+
+    plt.figtext(tmp_dict['xloc_text'], 0.9, tmp_dict['name'], fontweight = 'bold')
+    plt.legend(frameon = False, loc = 'upper left')
+    plt.tight_layout()
+    plt.savefig("v2_"+filelabel+"_range_T.pdf")
+    plt.close()

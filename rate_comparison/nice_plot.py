@@ -11,30 +11,10 @@ import matplotlib.ticker as mtick
 import os.path
 #from scipy.interpolate import InterpolatedUnivariateSpline
 import scipy.interpolate
-
-
-###########################################################################
-########################## Plotting calculations ##########################
-###########################################################################
-
-font = {'family' : 'URW Gothic',
-        'weight' : 'bold',
-        'size'   : 16}
-
-plt.rc('font', **font)
-#
-#legend_params={
-#'framealpha' : 1,
-#'fontsize':14, 
-#'handletextpad':0.3, 
-#'labelspacing':0.1, 
-#'borderaxespad':0.1
-#}
-#
-#plt.rc('legend', **legend_params)
-
-
-
+import matplotlib.gridspec as gridspec
+import sys
+sys.path.append(os.path.dirname(os.path.abspath(__file__)) + '/..')
+import common_plotting
 
 ######################################
 ############ Total rate ##############
@@ -73,44 +53,46 @@ pT_jf_total = raw[:,0]
 dN_jf_total = raw[:,1]
 #interp_jf = scipy.interpolate.interp1d(pT_jf, np.log(dN_jf), kind='linear')
 
+gs = gridspec.GridSpec(10,1)
+common_plotting.load_plotting_style()
 plt.figure()
+plt.subplot(gs[:7 , :])
 plt.xscale('linear')
 plt.yscale('log')
-plt.xlim(0,3.8)
-plt.ylim(1e-15,1e-3)
-plt.xlabel(r'$p_T$ $(GeV)$')
-plt.ylabel(r'$P^0 d^3{\Gamma}/d3p$ $(GeV^{-2} fm^{-4})$')
+plt.xticks([])
+plt.ylabel(r"E $\frac{\mathrm{dR}}{\mathrm{d}^{3}\mathrm{p}}$ [GeV$^{-2}$ fm$^{-4}$]")
 
-plt.text(0.28, 0.9, 'Line: Analytical\nPoint: SMASH', horizontalalignment='left', verticalalignment='center', transform=plt.axes().transAxes)
+# SMASH
+resampled_smash_pT=np.linspace(np.max([pT_brem[0],0.2]),np.max(pT_brem),30)
+plt.plot(resampled_smash_pT, interp_22(resampled_smash_pT)  , label='Binary Scatterings',)
+plt.plot(resampled_smash_pT, interp_brem(resampled_smash_pT), label='Bremsstrahlung')
+plt.plot(resampled_smash_pT, interp_brem(resampled_smash_pT)+interp_22(resampled_smash_pT), label='Total')
 
-resampled_smash_pT=np.linspace(np.max([pT_brem[0],0.2]),np.max(pT_brem),20)
-plt.errorbar(x=resampled_smash_pT, y=interp_brem(resampled_smash_pT)+interp_22(resampled_smash_pT), yerr=interp_brem_err(resampled_smash_pT)+interp_22_err(resampled_smash_pT),fmt="D", color='black', label="Total") 
-plt.errorbar(x=resampled_smash_pT, y=interp_brem(resampled_smash_pT), yerr=interp_brem_err(resampled_smash_pT),fmt="D", color='red', label=r"$\pi \pi \to \pi \pi \gamma$") 
-plt.errorbar(x=resampled_smash_pT, y=interp_22(resampled_smash_pT), yerr=interp_22_err(resampled_smash_pT),fmt="D", color='blue', label=r"$\pi \rho \to \pi \gamma$") 
+plt.fill_between(resampled_smash_pT, interp_22(resampled_smash_pT) - interp_22_err(resampled_smash_pT), interp_22(resampled_smash_pT) + interp_22_err(resampled_smash_pT), lw = 0, alpha = 0.5)
+plt.fill_between(resampled_smash_pT, interp_brem(resampled_smash_pT) - interp_brem_err(resampled_smash_pT), interp_brem(resampled_smash_pT) + interp_brem_err(resampled_smash_pT), lw = 0, alpha = 0.5)
+plt.fill_between(resampled_smash_pT, interp_22(resampled_smash_pT) + interp_brem(resampled_smash_pT) - np.sqrt(interp_22_err(resampled_smash_pT)**2 + interp_brem_err(resampled_smash_pT)**2), interp_22(resampled_smash_pT) + interp_brem(resampled_smash_pT) + np.sqrt(interp_22_err(resampled_smash_pT)**2 + interp_brem_err(resampled_smash_pT)**2), lw = 0, alpha = 0.5)
 
-plt.plot(pT_jf_total,dN_jf_total,"-", color='black') 
-plt.plot(pT_jf_brem,dN_jf_brem,"-.", color='red') 
-plt.plot(pT_jf_22,dN_jf_22,":", color='blue') 
+# MUSIC
+plt.plot(pT_jf_22,dN_jf_22, '--')
+plt.plot(pT_jf_brem,dN_jf_brem,"--")
+plt.plot(pT_jf_total,dN_jf_total,"--")
 
-plt.legend(loc='upper right', fontsize=14)
-plt.tight_layout()
+# dummies for legend entry
+plt.plot(1,50, color ='grey', label = 'SMASH')
+plt.plot(1,70, color ='grey', label = 'MUSIC', ls = '--')
+
+plt.xlim(0.2,1.5)
+plt.ylim(1e-7, 1e-3)
+plt.legend(loc='upper right', frameon=False, ncol=2)
+
+plt.subplot(gs[7:, :])
+plt.plot(pT_jf_total, (interp_brem(pT_jf_total)+interp_22(pT_jf_total)) / dN_jf_total, label = r'Total$_\mathsf{SMASH}$ / Total$_\mathsf{MUSIC}$', color = 'C2')
+plt.fill_between(pT_jf_total, (interp_brem(pT_jf_total)+interp_22(pT_jf_total) - interp_brem_err(pT_jf_total)-interp_22_err(pT_jf_total)) / dN_jf_total, (interp_brem(pT_jf_total)+interp_22(pT_jf_total) + interp_brem_err(pT_jf_total)+interp_22_err(pT_jf_total)) / dN_jf_total, color = 'C2', alpha = 0.5, lw = 0)
+plt.axhline(1.0, color = 'grey', lw = 1)
+plt.xlim(0.2,1.5)
+plt.ylim(0.8,1.6)
+plt.xlabel(r'p$_\mathsf{T}$ [GeV]')
+plt.legend(loc='upper left', frameon=False)
+plt.tight_layout(h_pad = -0.5)
 plt.savefig("thermal_photon_comparison.pdf")
-plt.show()
-
-
-
-#plt.figure()
-#plt.title("Total hadronic rate comparison")
-#plt.xscale('linear')
-#plt.yscale('linear')
-#plt.xlim(0,4)
-#plt.ylim(0.5,2.0)
-#plt.xlabel(r'$p_T$ $(GeV)$')
-#plt.ylabel(r'Ratio of rates')
-#
-#plt.plot(pT_jf,dN_jf/(interp_brem(pT_jf)+interp_22(pT_jf)),"-", color='black', label="JF/SMASH") 
-#
-#plt.legend(loc='upper right')
-#plt.tight_layout()
-#plt.savefig("ratio_thermal_photon_total_rate_used_for_comparison_hydro_vs_smash.pdf")
-#plt.show()
+plt.close()

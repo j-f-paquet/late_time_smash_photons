@@ -11,27 +11,9 @@ import matplotlib.ticker as mtick
 import os.path
 #from scipy.interpolate import InterpolatedUnivariateSpline
 import scipy.interpolate
-
-
-###########################################################################
-########################## Plotting calculations ##########################
-###########################################################################
-
-font = {'family' : 'URW Gothic',
-        'weight' : 'bold',
-        'size'   : 16}
-
-plt.rc('font', **font)
-#
-#legend_params={
-#'framealpha' : 1,
-#'fontsize':14, 
-#'handletextpad':0.3, 
-#'labelspacing':0.1, 
-#'borderaxespad':0.1
-#}
-#
-#plt.rc('legend', **legend_params)
+import sys
+sys.path.append(os.path.dirname(os.path.abspath(__file__)) + '/..')
+import common_plotting
 
 ######################################
 ############ Total rate ##############
@@ -75,32 +57,99 @@ pT_music, dN_music_100_150_22, *rest = raw.T
 raw=np.loadtxt("../calcs/photons/averaged_hydro_calcs/results/brem_photons_T100-150_nx200/AuAu200/C10-20/average_sp.dat")
 pT_music, dN_music_100_150_brem, *rest = raw.T
 
+#####################################
+# single line plot with 120-150 proxy
+#####################################
+
+common_plotting.load_plotting_style()
 plt.figure()
 plt.xscale('linear')
 plt.yscale('log')
 plt.xlim(0,4)
-plt.ylim(1e-9,1e2)
-plt.xlabel(r'$p_T$ $(GeV)$')
-plt.ylabel(r'$P^0 d^3{N_\gamma}/d3p$ $(GeV^{-2})$')
+plt.ylim(1e-6,1e1)
+plt.xlabel(r'p$_\mathsf{T}$ [GeV]')
+plt.ylabel(r'1/(2$\pi$ p$_\mathrm{T}$) dN$_\gamma$/dp$_\mathrm{T} |_{y =0}$ [Gev$^{-2}$]')
 
-plt.text(0.2, 0.9, 'Points: SMASH\nLight bands:    Hydro, 100<T<150 MeV\nDarker bands: Hydro, 120<T<150 MeV', horizontalalignment='left', verticalalignment='center', transform=plt.axes().transAxes, fontsize=14)
+# SMASH
+plt.plot(pT_smash[::3], dN_22[::3], ls = '-', label = r'SMASH: 2$\leftrightarrow$2 Scatterings', color = 'C2')
+plt.plot(pT_smash[::3], dN_brem[::3], ls = '--', label = 'SMASH: Bremsstrahlung', color = 'C2')
+plt.fill_between(pT_smash[::3], dN_22[::3] - dN_22_err[::3], dN_22[::3] + dN_22_err[::3], color = 'C2', alpha = 0.5, lw = 0)
+plt.fill_between(pT_smash[::3], dN_brem[::3] - dN_brem_err[::3], dN_brem[::3] + dN_brem_err[::3], color = 'C2', alpha = 0.5, lw = 0)
 
-plt.plot(pT_music, dN_music_above_Tfr,"-", color='black', label=r"Hydro, T>150 MeV") 
+# Single line proxy MUSIC HRG:
+plt.plot(pT_music, dN_music_120_150_22, label = 'MUSIC$_\mathsf{HRG}$: 2$\leftrightarrow$2 Scatterings', ls = '-', color = 'C0')
+plt.plot(pT_music, dN_music_120_150_brem, label = 'MUSIC$_\mathsf{HRG}$: Bremsstrahlung', ls = '--', color = 'C0')
 
-#ax3.fill_between(x, y1, y2)
-plt.errorbar(x=pT_smash[::3], y=dN_brem[::3], yerr=dN_brem_err[::3], fmt='D', color='red') 
-plt.errorbar(x=pT_smash[::3], y=dN_22[::3], yerr=dN_22_err[::3], fmt='D', color='blue') 
+# MUSIC QGP:
+plt.plot(pT_music, dN_music_above_Tfr, label=r"MUSIC$_\mathsf{QGP}$", color='C1', ls = ':')
 
-plt.fill_between(pT_music, dN_music_140_150_brem, dN_music_100_150_brem, color='red', alpha=0.3, label=r"$\pi \pi \to \pi \pi \gamma$") 
-plt.fill_between(pT_music, dN_music_140_150_22, dN_music_100_150_22, color='blue', alpha=0.3, label=r"$\pi \rho \to \pi \gamma$") 
-
-plt.fill_between(pT_music, dN_music_140_150_brem, dN_music_120_150_brem, color='red', alpha=0.4) 
-plt.fill_between(pT_music, dN_music_140_150_22, dN_music_120_150_22, color='blue', alpha=0.4) 
-
-plt.legend(loc='lower left', fontsize=10)
+plt.legend(frameon=False)
 plt.tight_layout()
-plt.savefig("spectra_photon_comparison.pdf")
-plt.show()
+plt.savefig("spectra_photon_comparison_single_line_proxy.pdf")
+plt.close()
 
 
 
+##############################
+# with bands, short range
+##############################
+common_plotting.load_plotting_style()
+plt.figure()
+plt.xscale('linear')
+plt.yscale('log')
+plt.xlim(0,4)
+plt.ylim(1e-6,1e1)
+plt.xlabel(r'p$_\mathsf{T}$ [GeV]')
+plt.ylabel(r'1/(2$\pi$ p$_\mathrm{T}$) dN$_\gamma$/dp$_\mathrm{T} |_{y =0}$ [Gev$^{-2}$]')
+
+# SMASH
+plt.plot(pT_smash[::3], dN_22[::3], ls = '-', label = r'SMASH: 2$\leftrightarrow$2 Scatterings', color = 'C0')
+plt.plot(pT_smash[::3], dN_brem[::3], ls = '--', label = 'SMASH: Bremsstrahlung', color = 'C1')
+plt.fill_between(pT_smash[::3], dN_22[::3] - dN_22_err[::3], dN_22[::3] + dN_22_err[::3], color = 'C2', alpha = 0.5, lw = 0)
+plt.fill_between(pT_smash[::3], dN_brem[::3] - dN_brem_err[::3], dN_brem[::3] + dN_brem_err[::3], color = 'C2', alpha = 0.5, lw = 0)
+
+# short range: 120 MeV < T 150 MeV
+plt.fill_between(pT_music, dN_music_140_150_22, dN_music_120_150_22, color = 'C0' , alpha=0.7, label='MUSIC$_\mathsf{HRG}$: 2$\leftrightarrow$2 Scatterings\n' + '120 MeV < T < 150 MeV', lw = 0)
+plt.fill_between(pT_music, dN_music_140_150_brem, dN_music_120_150_brem , color = 'C1', alpha=0.7, label='MUSIC$_\mathsf{HRG}$: Bremsstrahlung \n' + '120 MeV < T < 150 MeV', lw = 0)
+
+# MUSIC QGP
+plt.plot(pT_music, dN_music_above_Tfr, label=r"MUSIC$_\mathsf{QGP}$", color='C2', ls = ':')
+
+plt.legend(frameon=False)
+plt.tight_layout()
+plt.savefig("spectra_photon_comparison_120_150MeV.pdf")
+plt.close()
+
+
+
+
+##############################
+# with bands, long range
+##############################
+common_plotting.load_plotting_style()
+plt.figure()
+plt.xscale('linear')
+plt.yscale('log')
+plt.xlim(0,4)
+plt.ylim(1e-6,1e1)
+plt.xlabel(r'p$_\mathsf{T}$ [GeV]')
+plt.ylabel(r'1/(2$\pi$ p$_\mathrm{T}$) dN$_\gamma$/dp$_\mathrm{T} |_{y =0}$ [Gev$^{-2}$]')
+
+# SMASH
+plt.plot(pT_smash[::3], dN_22[::3], ls = '-', label = r'SMASH: 2$\leftrightarrow$2 Scatterings', color = 'C0')
+plt.plot(pT_smash[::3], dN_brem[::3], ls = '--', label = 'SMASH: Bremsstrahlung', color = 'C1')
+plt.fill_between(pT_smash[::3], dN_22[::3] - dN_22_err[::3], dN_22[::3] + dN_22_err[::3], color = 'C2', alpha = 0.5, lw = 0)
+plt.fill_between(pT_smash[::3], dN_brem[::3] - dN_brem_err[::3], dN_brem[::3] + dN_brem_err[::3], color = 'C2', alpha = 0.5, lw = 0)
+
+# long range: 100 MeV < T < 150 MeV
+plt.fill_between(pT_music, dN_music_140_150_22, dN_music_100_150_22, color = 'C0' , alpha=0.7, label='MUSIC$_\mathsf{HRG}$: 2$\leftrightarrow$2 Scatterings\n' + '100 MeV < T < 150 MeV', lw = 0)
+plt.fill_between(pT_music, dN_music_140_150_brem, dN_music_100_150_brem , color = 'C1', alpha=0.7, label='MUSIC$_\mathsf{HRG}$: Bremsstrahlung \n' + '100 MeV < T < 150 MeV', lw = 0)
+
+# MUSIC QGP
+plt.plot(pT_music, dN_music_above_Tfr, label=r"MUSIC$_\mathsf{QGP}$", color='C2', ls = ':')
+
+
+plt.legend(frameon=False)
+plt.tight_layout()
+plt.savefig("spectra_photon_comparison_100_150MeV.pdf")
+plt.close()
