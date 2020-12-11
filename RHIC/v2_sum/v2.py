@@ -13,7 +13,7 @@ import os.path
 import scipy.interpolate
 import seaborn as sns
 import sys
-sys.path.append(os.path.dirname(os.path.abspath(__file__)) + '/..')
+sys.path.append(os.path.dirname(os.path.abspath(__file__)) + '/../..')
 import common_plotting
 
 
@@ -21,19 +21,19 @@ import common_plotting
 ############ Total rate ##############
 ######################################
 
-raw=np.loadtxt("../calcs/photons/averaged_hydro_calcs/results/photons_above_Tfr_nx200/AuAu200/C10-20/average_sp.dat")
+raw=np.loadtxt("../../calcs/photons/averaged_hydro_calcs/results/photons_above_Tfr_nx200/AuAu200/C10-20/average_sp.dat")
 pT_above, dN_music_above, v1_above, v2_above, *rest = raw.T
 
-raw=np.loadtxt("../calcs/photons/averaged_hydro_calcs/combined/average_sp_smash_tot.dat")
+raw=np.loadtxt("../../calcs/photons/averaged_hydro_calcs/combined/average_sp_smash_tot.dat")
 pT_above_plus_smash, dN_music_above_plus_smash, v1_music_above_plus_smash, v2_music_above_plus_smash, *rest = raw.T
 
-raw=np.loadtxt("../calcs/photons/averaged_hydro_calcs/combined/average_sp_hydro_tot_T140-150.dat")
+raw=np.loadtxt("../../calcs/photons/averaged_hydro_calcs/combined/average_sp_hydro_tot_T140-150.dat")
 pT_above_plus_hydro140, dN_music_above_plus_hydro140, v1_music_above_plus_hydro140, v2_music_above_plus_hydro140, *rest = raw.T
 
-raw=np.loadtxt("../calcs/photons/averaged_hydro_calcs/combined/average_sp_hydro_tot_T120-150.dat")
+raw=np.loadtxt("../../calcs/photons/averaged_hydro_calcs/combined/average_sp_hydro_tot_T120-150.dat")
 pT_above_plus_hydro120, dN_music_above_plus_hydro120, v1_music_above_plus_hydro120, v2_music_above_plus_hydro120, *rest = raw.T
 
-raw=np.loadtxt("../calcs/photons/averaged_hydro_calcs/combined/average_sp_hydro_tot_T100-150.dat")
+raw=np.loadtxt("../../calcs/photons/averaged_hydro_calcs/combined/average_sp_hydro_tot_T100-150.dat")
 pT_above_plus_hydro100, dN_music_above_plus_hydro100, v1_music_above_plus_hydro100, v2_music_above_plus_hydro100, *rest = raw.T
 
 common_plotting.load_plotting_style()

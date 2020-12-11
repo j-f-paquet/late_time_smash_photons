@@ -13,7 +13,7 @@ import os.path
 import scipy.interpolate
 import matplotlib.gridspec as gridspec
 import sys
-sys.path.append(os.path.dirname(os.path.abspath(__file__)) + '/..')
+sys.path.append(os.path.dirname(os.path.abspath(__file__)) + '/../..')
 import common_plotting
 
 ######################################
@@ -21,7 +21,7 @@ import common_plotting
 ######################################
 
 # SMASH
-raw=np.loadtxt("../calcs/photons/smash_calcs/rhic/pT_photons_midy.txt")
+raw=np.loadtxt("../../calcs/photons/smash_calcs/rhic/pT_photons_midy.txt")
 pT_smash, pre_dN_22, pre_dN_22_err, pre_dN_brem, pre_dN_brem_err = raw.T
 dN_22=pre_dN_22/(2*np.pi*pT_smash)
 dN_22_err=pre_dN_22_err/(2*np.pi*pT_smash)
@@ -37,19 +37,19 @@ dN_brem_err=pre_dN_brem_err/(2*np.pi*pT_smash)
 #photons_above_Tfr_nx200/vn_rate_qgp_ideal_LO_AMYfit.dat
 #photons_above_Tfr_nx200/vn_rate_thermal_ideal.dat
 
-raw=np.loadtxt("../calcs/photons/averaged_hydro_calcs/results/photons_above_Tfr_nx200/AuAu200/C10-20/average_sp.dat")
+raw=np.loadtxt("../../calcs/photons/averaged_hydro_calcs/results/photons_above_Tfr_nx200/AuAu200/C10-20/average_sp.dat")
 pT_above, dN_music_above, *rest = raw.T
 
-raw=np.loadtxt("../calcs/photons/averaged_hydro_calcs/combined/average_sp_smash_tot.dat")
+raw=np.loadtxt("../../calcs/photons/averaged_hydro_calcs/combined/average_sp_smash_tot.dat")
 pT_above_plus_smash, dN_music_above_plus_smash, *rest = raw.T
 
-raw=np.loadtxt("../calcs/photons/averaged_hydro_calcs/combined/average_sp_hydro_tot_T140-150.dat")
+raw=np.loadtxt("../../calcs/photons/averaged_hydro_calcs/combined/average_sp_hydro_tot_T140-150.dat")
 pT_above_plus_hydro140, dN_music_above_plus_hydro140, *rest = raw.T
 
-raw=np.loadtxt("../calcs/photons/averaged_hydro_calcs/combined/average_sp_hydro_tot_T120-150.dat")
+raw=np.loadtxt("../../calcs/photons/averaged_hydro_calcs/combined/average_sp_hydro_tot_T120-150.dat")
 pT_above_plus_hydro120, dN_music_above_plus_hydro120, *rest = raw.T
 
-raw=np.loadtxt("../calcs/photons/averaged_hydro_calcs/combined/average_sp_hydro_tot_T100-150.dat")
+raw=np.loadtxt("../../calcs/photons/averaged_hydro_calcs/combined/average_sp_hydro_tot_T100-150.dat")
 pT_above_plus_hydro100, dN_music_above_plus_hydro100, *rest = raw.T
 
 
