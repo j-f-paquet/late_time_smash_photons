@@ -82,8 +82,9 @@ plt.plot(1,50, color ='grey', label = 'SMASH')
 plt.plot(1,70, color ='grey', label = 'MUSIC', ls = '--')
 
 plt.xlim(0.2,1.5)
-plt.ylim(1e-7, 1e-3)
+plt.ylim(1e-7, 1e-2)
 plt.legend(loc='upper right', frameon=False, ncol=2)
+plt.figtext(0.23, 0.88, 'T = 150 MeV', fontweight = 'bold')
 
 plt.subplot(gs[7:, :])
 plt.plot(pT_jf_total, (interp_brem(pT_jf_total)+interp_22(pT_jf_total)) / dN_jf_total, label = r'Total$_\mathsf{SMASH}$ / Total$_\mathsf{MUSIC}$', color = 'C2')
