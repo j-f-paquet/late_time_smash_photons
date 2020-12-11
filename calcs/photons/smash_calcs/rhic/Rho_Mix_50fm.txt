@@ -1,0 +1,1 @@
+{'2 to 3': 0.0, '2 to 2': 0.0, '2 to 1': 116504.5, 'Elastic (2 to X)': 6107.5, 'Decays': 207366.25, 'Elastic (decay)': 18144.75, 'Sampler': 104393.0, 'Strings': 3737.5}
