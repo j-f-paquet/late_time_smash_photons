@@ -20,7 +20,7 @@ import common_plotting
 ######################################
 
 # SMASH
-raw=np.loadtxt("../../calcs/photons/smash_calcs/rhic/pT_photons_midy.txt")
+raw=np.loadtxt("../../calcs/photons/smash_calcs/lhc/low_stats/pT_photons_midy.txt")
 pT_smash, pre_dN_22, pre_dN_22_err, pre_dN_brem, pre_dN_brem_err = raw.T
 dN_22=pre_dN_22/(2*np.pi*pT_smash)
 dN_22_err=pre_dN_22_err/(2*np.pi*pT_smash)
@@ -35,27 +35,27 @@ dN_brem_err=pre_dN_brem_err/(2*np.pi*pT_smash)
 #photons_above_Tfr_nx200/vn_rate_hg_pion_brem_ideal_Rapp_fit_tabulated.dat
 #photons_above_Tfr_nx200/vn_rate_qgp_ideal_LO_AMYfit.dat
 #photons_above_Tfr_nx200/vn_rate_thermal_ideal.dat
-
-raw=np.loadtxt("../../calcs/photons/averaged_hydro_calcs/results/photons_above_Tfr_nx200/AuAu200/C10-20/average_sp.dat")
-pT_music, dN_music_above_Tfr, *rest = raw.T
-
-raw=np.loadtxt("../../calcs/photons/averaged_hydro_calcs/results/22_photons_T140-150_nx200/AuAu200/C10-20/average_sp.dat")
-pT_music, dN_music_140_150_22, *rest = raw.T
-
-raw=np.loadtxt("../../calcs/photons/averaged_hydro_calcs/results/brem_photons_T140-150_nx200/AuAu200/C10-20/average_sp.dat")
-pT_music, dN_music_140_150_brem, *rest = raw.T
-
-raw=np.loadtxt("../../calcs/photons/averaged_hydro_calcs/results/22_photons_T120-150_nx200/AuAu200/C10-20/average_sp.dat")
-pT_music, dN_music_120_150_22, *rest = raw.T
-
-raw=np.loadtxt("../../calcs/photons/averaged_hydro_calcs/results/brem_photons_T120-150_nx200/AuAu200/C10-20/average_sp.dat")
-pT_music, dN_music_120_150_brem, *rest = raw.T
-
-raw=np.loadtxt("../../calcs/photons/averaged_hydro_calcs/results/22_photons_T100-150_nx200/AuAu200/C10-20/average_sp.dat")
-pT_music, dN_music_100_150_22, *rest = raw.T
-
-raw=np.loadtxt("../../calcs/photons/averaged_hydro_calcs/results/brem_photons_T100-150_nx200/AuAu200/C10-20/average_sp.dat")
-pT_music, dN_music_100_150_brem, *rest = raw.T
+#
+# raw=np.loadtxt("../../calcs/photons/averaged_hydro_calcs/results/photons_above_Tfr_nx200/AuAu200/C10-20/average_sp.dat")
+# pT_music, dN_music_above_Tfr, *rest = raw.T
+#
+# raw=np.loadtxt("../../calcs/photons/averaged_hydro_calcs/results/22_photons_T140-150_nx200/AuAu200/C10-20/average_sp.dat")
+# pT_music, dN_music_140_150_22, *rest = raw.T
+#
+# raw=np.loadtxt("../../calcs/photons/averaged_hydro_calcs/results/brem_photons_T140-150_nx200/AuAu200/C10-20/average_sp.dat")
+# pT_music, dN_music_140_150_brem, *rest = raw.T
+#
+# raw=np.loadtxt("../../calcs/photons/averaged_hydro_calcs/results/22_photons_T120-150_nx200/AuAu200/C10-20/average_sp.dat")
+# pT_music, dN_music_120_150_22, *rest = raw.T
+#
+# raw=np.loadtxt("../../calcs/photons/averaged_hydro_calcs/results/brem_photons_T120-150_nx200/AuAu200/C10-20/average_sp.dat")
+# pT_music, dN_music_120_150_brem, *rest = raw.T
+#
+# raw=np.loadtxt("../../calcs/photons/averaged_hydro_calcs/results/22_photons_T100-150_nx200/AuAu200/C10-20/average_sp.dat")
+# pT_music, dN_music_100_150_22, *rest = raw.T
+#
+# raw=np.loadtxt("../../calcs/photons/averaged_hydro_calcs/results/brem_photons_T100-150_nx200/AuAu200/C10-20/average_sp.dat")
+# pT_music, dN_music_100_150_brem, *rest = raw.T
 
 #####################################
 # single line plot with 120-150 proxy
@@ -77,11 +77,11 @@ plt.fill_between(pT_smash[::3], dN_22[::3] - dN_22_err[::3], dN_22[::3] + dN_22_
 plt.fill_between(pT_smash[::3], dN_brem[::3] - dN_brem_err[::3], dN_brem[::3] + dN_brem_err[::3], color = 'C2', alpha = 0.5, lw = 0)
 
 # Single line proxy MUSIC HRG:
-plt.plot(pT_music, dN_music_120_150_22, label = 'MUSIC$_\mathsf{HRG}$: 2$\leftrightarrow$2 Scatterings', ls = '-', color = 'C0')
-plt.plot(pT_music, dN_music_120_150_brem, label = 'MUSIC$_\mathsf{HRG}$: Bremsstrahlung', ls = '--', color = 'C0')
+# plt.plot(pT_music, dN_music_120_150_22, label = 'MUSIC$_\mathsf{HRG}$: 2$\leftrightarrow$2 Scatterings', ls = '-', color = 'C0')
+# plt.plot(pT_music, dN_music_120_150_brem, label = 'MUSIC$_\mathsf{HRG}$: Bremsstrahlung', ls = '--', color = 'C0')
 
 # MUSIC QGP:
-plt.plot(pT_music, dN_music_above_Tfr, label=r"MUSIC$_\mathsf{QGP}$", color='C1', ls = ':')
+# plt.plot(pT_music, dN_music_above_Tfr, label=r"MUSIC$_\mathsf{QGP}$", color='C1', ls = ':')
 
 plt.legend(frameon=False)
 plt.tight_layout()
@@ -109,11 +109,11 @@ plt.fill_between(pT_smash[::3], dN_22[::3] - dN_22_err[::3], dN_22[::3] + dN_22_
 plt.fill_between(pT_smash[::3], dN_brem[::3] - dN_brem_err[::3], dN_brem[::3] + dN_brem_err[::3], color = 'C1', alpha = 0.5, lw = 0)
 
 # short range: 120 MeV < T 150 MeV
-plt.fill_between(pT_music, dN_music_140_150_22, dN_music_120_150_22, color = 'C0' , alpha=0.7, label='MUSIC$_\mathsf{HRG}$: 2$\leftrightarrow$2 Scatterings\n' + '120 MeV < T < 150 MeV', lw = 0)
-plt.fill_between(pT_music, dN_music_140_150_brem, dN_music_120_150_brem , color = 'C1', alpha=0.7, label='MUSIC$_\mathsf{HRG}$: Bremsstrahlung \n' + '120 MeV < T < 150 MeV', lw = 0)
+# plt.fill_between(pT_music, dN_music_140_150_22, dN_music_120_150_22, color = 'C0' , alpha=0.7, label='MUSIC$_\mathsf{HRG}$: 2$\leftrightarrow$2 Scatterings\n' + '120 MeV < T < 150 MeV', lw = 0)
+# plt.fill_between(pT_music, dN_music_140_150_brem, dN_music_120_150_brem , color = 'C1', alpha=0.7, label='MUSIC$_\mathsf{HRG}$: Bremsstrahlung \n' + '120 MeV < T < 150 MeV', lw = 0)
 
 # MUSIC QGP
-plt.plot(pT_music, dN_music_above_Tfr, label=r"MUSIC$_\mathsf{QGP}$", color='C2', ls = ':')
+# plt.plot(pT_music, dN_music_above_Tfr, label=r"MUSIC$_\mathsf{QGP}$", color='C2', ls = ':')
 
 plt.legend(frameon=False)
 plt.tight_layout()
@@ -142,11 +142,11 @@ plt.fill_between(pT_smash[::3], dN_22[::3] - dN_22_err[::3], dN_22[::3] + dN_22_
 plt.fill_between(pT_smash[::3], dN_brem[::3] - dN_brem_err[::3], dN_brem[::3] + dN_brem_err[::3], color = 'C1', alpha = 0.5, lw = 0)
 
 # long range: 100 MeV < T < 150 MeV
-plt.fill_between(pT_music, dN_music_140_150_22, dN_music_100_150_22, color = 'C0' , alpha=0.7, label='MUSIC$_\mathsf{HRG}$: 2$\leftrightarrow$2 Scatterings\n' + '100 MeV < T < 150 MeV', lw = 0)
-plt.fill_between(pT_music, dN_music_140_150_brem, dN_music_100_150_brem , color = 'C1', alpha=0.7, label='MUSIC$_\mathsf{HRG}$: Bremsstrahlung \n' + '100 MeV < T < 150 MeV', lw = 0)
+# plt.fill_between(pT_music, dN_music_140_150_22, dN_music_100_150_22, color = 'C0' , alpha=0.7, label='MUSIC$_\mathsf{HRG}$: 2$\leftrightarrow$2 Scatterings\n' + '100 MeV < T < 150 MeV', lw = 0)
+# plt.fill_between(pT_music, dN_music_140_150_brem, dN_music_100_150_brem , color = 'C1', alpha=0.7, label='MUSIC$_\mathsf{HRG}$: Bremsstrahlung \n' + '100 MeV < T < 150 MeV', lw = 0)
 
 # MUSIC QGP
-plt.plot(pT_music, dN_music_above_Tfr, label=r"MUSIC$_\mathsf{QGP}$", color='C2', ls = ':')
+# plt.plot(pT_music, dN_music_above_Tfr, label=r"MUSIC$_\mathsf{QGP}$", color='C2', ls = ':')
 
 
 plt.legend(frameon=False)
