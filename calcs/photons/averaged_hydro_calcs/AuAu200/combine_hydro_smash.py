@@ -22,22 +22,22 @@ result_dict['smash']={
 #    filename:"../../photon_calcs/smash_calcs/rhic/SP_v2_photons_2to2.txt",
 #},
 'tot':{
-    'filename_v2':"../../photon_calcs/smash_calcs/rhic/SP_v2_photons_total.txt",
-    'filename_spectra':"../../photon_calcs/smash_calcs/rhic/pT_photons_midy.txt",
+    'filename_v2':"../../smash_calcs/rhic/SP_v2_photons_total.txt",
+    'filename_spectra':"../../smash_calcs/rhic/pT_photons_midy.txt",
 },
 }
 result_dict['hydro']={
 'above':{
-    'filename':"../../photon_calcs/averaged_hydro_calcs/results/photons_above_Tfr_nx200/AuAu200/C10-20/average_sp.dat",
+    'filename':"results/photons_above_Tfr_nx200/AuAu200/C10-20/average_sp.dat",
 },
 'tot_T140-150':{
-    'filename':"../../photon_calcs/averaged_hydro_calcs/results/tot_photons_T140-150_nx200/AuAu200/C10-20/average_sp.dat"
+    'filename':"results/tot_photons_T140-150_nx200/AuAu200/C10-20/average_sp.dat"
 },
 'tot_T120-150':{
-    'filename':"../../photon_calcs/averaged_hydro_calcs/results/tot_photons_T120-150_nx200/AuAu200/C10-20/average_sp.dat"
+    'filename':"results/tot_photons_T120-150_nx200/AuAu200/C10-20/average_sp.dat"
 },
 'tot_T100-150':{
-    'filename':"../../photon_calcs/averaged_hydro_calcs/results/tot_photons_T100-150_nx200/AuAu200/C10-20/average_sp.dat"
+    'filename':"results/tot_photons_T100-150_nx200/AuAu200/C10-20/average_sp.dat"
 },
 }
 
@@ -135,13 +135,13 @@ exit(1)
 
 
 # Hydro
-raw=np.loadtxt("../../photon_calcs/averaged_hydro_calcs/results/photons_above_Tfr_nx200/AuAu200/C10-20/average_sp.dat")
+raw=np.loadtxt("results/photons_above_Tfr_nx200/AuAu200/C10-20/average_sp.dat")
 pT_music, dN_music_above_Tfr, v1_above_Tfr, v2_above_Tfr, *rest = raw.T
 
-raw=np.loadtxt("../../photon_calcs/averaged_hydro_calcs/results/tot_photons_T140-150_nx200/AuAu200/C10-20/average_sp.dat")
+raw=np.loadtxt("results/tot_photons_T140-150_nx200/AuAu200/C10-20/average_sp.dat")
 pT_music, dN_music_140_150_tot, v1_music_140_150_tot, v2_music_140_150_tot, *rest = raw.T
 
-raw=np.loadtxt("../../photon_calcs/averaged_hydro_calcs/results/22_photons_T140-150_nx200/AuAu200/C10-20/average_sp.dat")
+raw=np.loadtxt("results/22_photons_T140-150_nx200/AuAu200/C10-20/average_sp.dat")
 pT_music, dN_music_140_150_22, v1_music_140_150_22, v2_music_140_150_22, *rest = raw.T
 
 
