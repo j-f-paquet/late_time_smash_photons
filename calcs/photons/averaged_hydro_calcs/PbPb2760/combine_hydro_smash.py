@@ -31,16 +31,16 @@ result_dict['smash']={
 }
 result_dict['hydro']={
 'above':{
-    'filename':"results/photons_above_Tfr_nx200/AuAu200/C10-20/average_sp.dat",
+    'filename':"results/photons_above_Tfr_nx200/PbPb2760/C10-20/average_sp.dat",
 },
 'tot_T140-150':{
-    'filename':"results/tot_photons_T140-150_nx200/AuAu200/C10-20/average_sp.dat"
+    'filename':"results/tot_photons_T140-150_nx200/PbPb2760/C10-20/average_sp.dat"
 },
 'tot_T120-150':{
-    'filename':"results/tot_photons_T120-150_nx200/AuAu200/C10-20/average_sp.dat"
+    'filename':"results/tot_photons_T120-150_nx200/PbPb2760/C10-20/average_sp.dat"
 },
 'tot_T100-150':{
-    'filename':"results/tot_photons_T100-150_nx200/AuAu200/C10-20/average_sp.dat"
+    'filename':"results/tot_photons_T100-150_nx200/PbPb2760/C10-20/average_sp.dat"
 },
 }
 
@@ -138,13 +138,13 @@ exit(1)
 
 
 # Hydro
-raw=np.loadtxt("results/photons_above_Tfr_nx200/AuAu200/C10-20/average_sp.dat")
+raw=np.loadtxt("results/photons_above_Tfr_nx200/PbPb2760/C10-20/average_sp.dat")
 pT_music, dN_music_above_Tfr, v1_above_Tfr, v2_above_Tfr, *rest = raw.T
 
-raw=np.loadtxt("results/tot_photons_T140-150_nx200/AuAu200/C10-20/average_sp.dat")
+raw=np.loadtxt("results/tot_photons_T140-150_nx200/PbPb2760/C10-20/average_sp.dat")
 pT_music, dN_music_140_150_tot, v1_music_140_150_tot, v2_music_140_150_tot, *rest = raw.T
 
-raw=np.loadtxt("results/22_photons_T140-150_nx200/AuAu200/C10-20/average_sp.dat")
+raw=np.loadtxt("results/22_photons_T140-150_nx200/PbPb2760/C10-20/average_sp.dat")
 pT_music, dN_music_140_150_22, v1_music_140_150_22, v2_music_140_150_22, *rest = raw.T
 
 
@@ -153,7 +153,7 @@ pT_music, dN_music_140_150_22, v1_music_140_150_22, v2_music_140_150_22, *rest =
 ############## Systems & centralities ##############
 ####################################################
 
-system_list=["AuAu200"]
+system_list=["PbPb2760"]
 
 cent_class_list_calc=["C10-20"]
 

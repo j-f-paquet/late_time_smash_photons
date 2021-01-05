@@ -18,7 +18,7 @@ def get_rate_filelist(rate_type, system, cent_class, event):
 
 def get_hadron_Qns_path(system,cent_class,event):
 
-    file_dir="../raw_hydro_calcs/"
+    file_dir="../../raw_hydro_calcs/"
      
     return os.path.join(base_directory,file_dir, system, cent_class, event, "Qn_vectors_pions_smash.dat")
 
@@ -51,7 +51,7 @@ for thermal_rate_type in thermal_rate_types_below_T150:
     #vn_rate_hg_pion_brem_ideal_Rapp_fit_tabulated.dat
     #vn_rate_thermal_ideal.dat
 
-    file_dir="../raw_hydro_calcs/"
+    file_dir="../../raw_hydro_calcs/"
 
     # 
     rate_dict["22_with_photons_above_Tfr_"+thermal_rate_type]=lambda system, cent_class, event, thermal_rate_type=thermal_rate_type : [ os.path.join(base_directory,file_dir, system, cent_class, event, thermal_rate_type,"vn_rate_hg_ideal_Turbide_fit_noPiPi_tabulated.dat"), os.path.join(base_directory,file_dir, system, cent_class, event, thermal_rate_above_T150,"vn_rate_thermal_ideal.dat") ] 
@@ -69,7 +69,7 @@ for thermal_rate_type in thermal_rate_types_below_T150:
     #vn_rate_hg_pion_brem_ideal_Rapp_fit_tabulated.dat
     #vn_rate_thermal_ideal.dat
 
-    file_dir="../raw_hydro_calcs/"
+    file_dir="../../raw_hydro_calcs/"
 
     # 
     rate_dict["22_"+thermal_rate_type]=lambda system, cent_class, event, thermal_rate_type=thermal_rate_type: [ os.path.join(base_directory,file_dir, system, cent_class, event, thermal_rate_type,"vn_rate_hg_ideal_Turbide_fit_noPiPi_tabulated.dat") ] 
@@ -143,7 +143,7 @@ for result_name in rate_dict.keys():
 
             # Find all events
             #tmp_ref_dir=os.path.dirname(os.path.dirname(os.path.dirname(get_rate_filelist(result_name,system,cent_class,"1")[0])))
-            tmp_ref_dir=os.path.join("../raw_hydro_calcs/",system,cent_class) 
+            tmp_ref_dir=os.path.join("../../raw_hydro_calcs/",system,cent_class) 
             all_file_in_local_dir=os.listdir(path=tmp_ref_dir)
             subdir_regex = re.compile('([0-9]+)')
 

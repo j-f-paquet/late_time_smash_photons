@@ -86,7 +86,7 @@ for thermal_rate_type in thermal_rate_types_below_T150:
 ############## Systems & centralities ##############
 ####################################################
 
-system_list=["AuAu200"]
+system_list=["PbPb2760"]
 
 cent_class_list_calc=["C10-20"]
 
