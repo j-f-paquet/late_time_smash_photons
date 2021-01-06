@@ -29,43 +29,43 @@ raw=np.loadtxt("../../calcs/photons/smash_calcs/lhc/low_stats/SP_v2_photons_Brem
 pT_smash_brem, v2_brem, v2_err_brem = raw.T
 
 # Hydro
-# raw=np.loadtxt("../../calcs/photons/averaged_hydro_calcs/results/photons_above_Tfr_nx200/AuAu200/C10-20/average_sp.dat")
-# pT_music, dN_music_above_Tfr, v1_above_Tfr, v2_above_Tfr, *rest = raw.T
-#
-# raw=np.loadtxt("../../calcs/photons/averaged_hydro_calcs/results/tot_photons_T140-150_nx200/AuAu200/C10-20/average_sp.dat")
-# pT_music, dN_music_140_150_tot, v1_music_140_150_tot, v2_music_140_150_tot, *rest = raw.T
-#
-# raw=np.loadtxt("../../calcs/photons/averaged_hydro_calcs/results/22_photons_T140-150_nx200/AuAu200/C10-20/average_sp.dat")
-# pT_music, dN_music_140_150_22, v1_music_140_150_22, v2_music_140_150_22, *rest = raw.T
-#
-# raw=np.loadtxt("../../calcs/photons/averaged_hydro_calcs/results/brem_photons_T140-150_nx200/AuAu200/C10-20/average_sp.dat")
-# pT_music, dN_music_140_150_brem, v1_music_140_150_brem, v2_music_140_150_brem, *rest = raw.T
-#
-# raw=np.loadtxt("../../calcs/photons/averaged_hydro_calcs/results/tot_photons_T120-150_nx200/AuAu200/C10-20/average_sp.dat")
-# pT_music, dN_music_120_150_tot, v1_music_120_150_tot, v2_music_120_150_tot, *rest = raw.T
-#
-# raw=np.loadtxt("../../calcs/photons/averaged_hydro_calcs/results/22_photons_T120-150_nx200/AuAu200/C10-20/average_sp.dat")
-# pT_music, dN_music_120_150_22, v1_music_120_150_22, v2_music_120_150_22, *rest = raw.T
-#
-# raw=np.loadtxt("../../calcs/photons/averaged_hydro_calcs/results/brem_photons_T120-150_nx200/AuAu200/C10-20/average_sp.dat")
-# pT_music, dN_music_120_150_brem, v1_music_120_150_brem, v2_music_120_150_brem, *rest = raw.T
-#
-# raw=np.loadtxt("../../calcs/photons/averaged_hydro_calcs/results/tot_photons_T100-150_nx200/AuAu200/C10-20/average_sp.dat")
-# pT_music, dN_music_100_150_tot, v1_music_100_150_tot, v2_music_100_150_tot, *rest = raw.T
-#
-# raw=np.loadtxt("../../calcs/photons/averaged_hydro_calcs/results/22_photons_T100-150_nx200/AuAu200/C10-20/average_sp.dat")
-# pT_music, dN_music_100_150_22, v1_music_100_150_22, v2_music_100_150_22, *rest = raw.T
-#
-# raw=np.loadtxt("../../calcs/photons/averaged_hydro_calcs/results/brem_photons_T100-150_nx200/AuAu200/C10-20/average_sp.dat")
-# pT_music, dN_music_100_150_brem, v1_music_100_150_brem, v2_music_100_150_brem, *rest = raw.T
+raw=np.loadtxt("../../calcs/photons/averaged_hydro_calcs/PbPb2760/results/photons_above_Tfr_nx200/PbPb2760/C10-20/average_sp.dat")
+pT_music, dN_music_above_Tfr, v1_above_Tfr, v2_above_Tfr, *rest = raw.T
+
+raw=np.loadtxt("../../calcs/photons/averaged_hydro_calcs/PbPb2760/results/tot_photons_T140-150_nx200/PbPb2760/C10-20/average_sp.dat")
+pT_music, dN_music_140_150_tot, v1_music_140_150_tot, v2_music_140_150_tot, *rest = raw.T
+
+raw=np.loadtxt("../../calcs/photons/averaged_hydro_calcs/PbPb2760/results/22_photons_T140-150_nx200/PbPb2760/C10-20/average_sp.dat")
+pT_music, dN_music_140_150_22, v1_music_140_150_22, v2_music_140_150_22, *rest = raw.T
+
+raw=np.loadtxt("../../calcs/photons/averaged_hydro_calcs/PbPb2760/results/brem_photons_T140-150_nx200/PbPb2760/C10-20/average_sp.dat")
+pT_music, dN_music_140_150_brem, v1_music_140_150_brem, v2_music_140_150_brem, *rest = raw.T
+
+raw=np.loadtxt("../../calcs/photons/averaged_hydro_calcs/PbPb2760/results/tot_photons_T120-150_nx200/PbPb2760/C10-20/average_sp.dat")
+pT_music, dN_music_120_150_tot, v1_music_120_150_tot, v2_music_120_150_tot, *rest = raw.T
+
+raw=np.loadtxt("../../calcs/photons/averaged_hydro_calcs/PbPb2760/results/22_photons_T120-150_nx200/PbPb2760/C10-20/average_sp.dat")
+pT_music, dN_music_120_150_22, v1_music_120_150_22, v2_music_120_150_22, *rest = raw.T
+
+raw=np.loadtxt("../../calcs/photons/averaged_hydro_calcs/PbPb2760/results/brem_photons_T120-150_nx200/PbPb2760/C10-20/average_sp.dat")
+pT_music, dN_music_120_150_brem, v1_music_120_150_brem, v2_music_120_150_brem, *rest = raw.T
+
+raw=np.loadtxt("../../calcs/photons/averaged_hydro_calcs/PbPb2760/results/tot_photons_T100-150_nx200/PbPb2760/C10-20/average_sp.dat")
+pT_music, dN_music_100_150_tot, v1_music_100_150_tot, v2_music_100_150_tot, *rest = raw.T
+
+raw=np.loadtxt("../../calcs/photons/averaged_hydro_calcs/PbPb2760/results/22_photons_T100-150_nx200/PbPb2760/C10-20/average_sp.dat")
+pT_music, dN_music_100_150_22, v1_music_100_150_22, v2_music_100_150_22, *rest = raw.T
+
+raw=np.loadtxt("../../calcs/photons/averaged_hydro_calcs/PbPb2760/results/brem_photons_T100-150_nx200/PbPb2760/C10-20/average_sp.dat")
+pT_music, dN_music_100_150_brem, v1_music_100_150_brem, v2_music_100_150_brem, *rest = raw.T
 
 
 plot_dict={
 'late_tot':{
 'name' : 'Total',
 'smash_calcs':[pT_smash,v2_tot,v2_tot_err],
-# 'music_calcs_short':[pT_music, v2_music_140_150_tot, v2_music_120_150_tot],
-# 'music_calcs_long':[pT_music, v2_music_140_150_tot, v2_music_100_150_tot],
+'music_calcs_short':[pT_music, v2_music_140_150_tot, v2_music_120_150_tot],
+'music_calcs_long':[pT_music, v2_music_140_150_tot, v2_music_100_150_tot],
 'label':r"$\pi \pi \to \pi \pi \gamma$ & $\pi \rho \to \pi \gamma$",
 'plot_text':"Photons produced\nafter particlization\n"r"$\pi \pi \to \pi \pi \gamma$ & $\pi \rho \to \pi \gamma$",
 'plot_text_position':(0.55, 0.12),
@@ -74,8 +74,8 @@ plot_dict={
 'late_22':{
 'name' : '2$\leftrightarrow$2 Scatterings',
 'smash_calcs':[pT_smash_22,v2_22,v2_err_22],
-# 'music_calcs_short':[pT_music, v2_music_140_150_22, v2_music_120_150_22],
-# 'music_calcs_long':[pT_music, v2_music_140_150_22, v2_music_100_150_22],
+'music_calcs_short':[pT_music, v2_music_140_150_22, v2_music_120_150_22],
+'music_calcs_long':[pT_music, v2_music_140_150_22, v2_music_100_150_22],
 'label':r"$\pi \rho \to \pi \gamma$",
 'plot_text':"Photons produced\nafter particlization\n"r"$\pi \rho \to \pi \gamma$",
 'plot_text_position':(0.55, 0.12),
@@ -84,8 +84,8 @@ plot_dict={
 'late_brem':{
 'name' : 'Bremsstrahlung',
 'smash_calcs':[pT_smash_brem,v2_brem,v2_err_brem],
-# 'music_calcs_short':[pT_music, v2_music_140_150_brem, v2_music_120_150_brem],
-# 'music_calcs_long':[pT_music, v2_music_140_150_brem, v2_music_100_150_brem],
+'music_calcs_short':[pT_music, v2_music_140_150_brem, v2_music_120_150_brem],
+'music_calcs_long':[pT_music, v2_music_140_150_brem, v2_music_100_150_brem],
 'label':r"$\pi \pi \to \pi \pi \gamma$",
 'plot_text':"Photons produced\nafter particlization\n"r"$\pi \pi \to \pi \pi \gamma$",
 'plot_text_position':(0.55, 0.88),
@@ -114,14 +114,14 @@ for filelabel, tmp_dict in plot_dict.items():
     plt.fill_between(smash_calc[0], 100.0 * (smash_calc[1] - smash_calc[2]), 100.0 * (smash_calc[1] + smash_calc[2]), alpha = 0.5, color = 'C2', lw = 0)
 
     # MUSIC
-    # music_calc=tmp_dict['music_calcs_short']
-    # label=tmp_dict['label']
-    # plt.plot(music_calc[0], 100.0 * music_calc[2], color = 'C0', label = 'MUSIC$_\mathsf{HRG}$' )
+    music_calc=tmp_dict['music_calcs_short']
+    label=tmp_dict['label']
+    plt.plot(music_calc[0], 100.0 * music_calc[2], color = 'C0', label = 'MUSIC$_\mathsf{HRG}$' )
 
     plt.figtext(tmp_dict['xloc_text'], 0.9, tmp_dict['name'], fontweight = 'bold')
     plt.legend(frameon = False, loc = 'upper left')
     plt.tight_layout()
-    plt.savefig("v2_"+filelabel+"_single-line_proxy.pdf")
+    plt.savefig("v2_"+filelabel+"_single-line_proxy_LHC.pdf")
     plt.close()
 
 
@@ -146,17 +146,17 @@ for filelabel, tmp_dict in plot_dict.items():
     plt.fill_between(smash_calc[0], 100.0 * (smash_calc[1] - smash_calc[2]), 100.0 * (smash_calc[1] + smash_calc[2]), alpha = 0.5, color = 'C2', lw = 0)
 
     # MUSIC long
-    # music_calc=tmp_dict['music_calcs_long']
-    # label=tmp_dict['label']
-    # plt.fill_between(music_calc[0], 100.0 * music_calc[1], 100.0 * music_calc[2], alpha=0.7, color = 'C1', label = 'MUSIC$_\mathsf{HRG}$: 100 MeV < T < 150 MeV', lw = 0)
+    music_calc=tmp_dict['music_calcs_long']
+    label=tmp_dict['label']
+    plt.fill_between(music_calc[0], 100.0 * music_calc[1], 100.0 * music_calc[2], alpha=0.7, color = 'C1', label = 'MUSIC$_\mathsf{HRG}$: 100 MeV < T < 150 MeV', lw = 0)
 
     # MUSIC short
-    # music_calc=tmp_dict['music_calcs_short']
-    # label=tmp_dict['label']
-    # plt.fill_between(music_calc[0], 100.0 * music_calc[1], 100.0 * music_calc[2], alpha=0.7, color = 'C0', label = 'MUSIC$_\mathsf{HRG}$: 120 MeV < T < 150 MeV', lw = 0)
+    music_calc=tmp_dict['music_calcs_short']
+    label=tmp_dict['label']
+    plt.fill_between(music_calc[0], 100.0 * music_calc[1], 100.0 * music_calc[2], alpha=0.7, color = 'C0', label = 'MUSIC$_\mathsf{HRG}$: 120 MeV < T < 150 MeV', lw = 0)
 
     plt.figtext(tmp_dict['xloc_text'], 0.9, tmp_dict['name'], fontweight = 'bold')
     plt.legend(frameon = False, loc = 'upper left')
     plt.tight_layout()
-    plt.savefig("v2_"+filelabel+"_range_T.pdf")
+    plt.savefig("v2_"+filelabel+"_range_T_LHC.pdf")
     plt.close()
