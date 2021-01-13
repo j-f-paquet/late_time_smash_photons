@@ -10,3 +10,17 @@ def load_plotting_style():
     # colors
     import seaborn as sns
     sns.set_palette("rocket",3)
+
+
+def load_plotting_style_paper():
+    import matplotlib as mpl
+    mpl.rcParams['lines.linewidth'] = 2
+    mpl.rcParams['axes.labelsize'] = 16
+    mpl.rcParams['xtick.labelsize'] = 12
+    mpl.rcParams['ytick.labelsize'] = 12
+    mpl.rcParams['legend.fontsize'] = 9.5
+    mpl.rcParams['figure.figsize'] = 10*0.8, 6*0.8
+
+    # colors
+    import seaborn as sns
+    sns.set_palette("rocket",3)
