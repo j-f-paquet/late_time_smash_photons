@@ -85,34 +85,34 @@ music_above_rebin_music120_lhc = np.exp(music_above_interpolation_lhc(pT_above_p
 gs = gridspec.GridSpec(10,11)
 
 common_plotting.load_plotting_style_paper()
-plt.subplot(gs[:7 , 1:6])
+plt.subplot(gs[:6 , 1:6])
 # RHIC
 plt.xscale('linear')
 plt.yscale('log')
 plt.xticks([])
 plt.xlim(0,2.6)
 plt.ylim(1e-3,1.5e1)
-plt.ylabel(r'1/(2$\pi$ p$_\mathrm{T}$) dN$_\gamma$/dp$_\mathrm{T} |_{y =0}$ [Gev$^{-2}$]', fontsize = 14)
+plt.ylabel(r'1/(2$\pi$p$_\mathrm{T}$) dN$_\gamma$/dp$_\mathrm{T} |_{y =0}$ [Gev$^{-2}$]        ', fontsize = 13.5)
 
 plt.plot(pT_above_rhic, dN_music_above_rhic, label=r"MUSIC$_\mathsf{QGP}$", ls = ':', color = 'C1')
 plt.plot(pT_above_plus_smash_rhic, dN_music_above_plus_smash_rhic, ls = '--', label='MUSIC$_\mathsf{QGP}$ + ' + 'SMASH', color = 'C2')
-plt.fill_between(pT_above_plus_hydro120_rhic, dN_music_above_plus_hydro140_rhic, dN_music_above_plus_hydro120_rhic, alpha = 0.8, label = 'MUSIC$_\mathsf{QGP}$ + MUSIC$_\mathsf{HRG}$', lw = 0, color='C0')
+plt.fill_between(pT_above_plus_hydro120_rhic, dN_music_above_plus_hydro140_rhic, dN_music_above_plus_hydro120_rhic, alpha = 1.0, label = 'MUSIC$_\mathsf{QGP}$ + MUSIC$_\mathsf{HRG}$', lw = 0, color='C0')
 plt.legend(fontsize=10, frameon=False)
 
-plt.subplot(gs[7:, 1:6])
+plt.subplot(gs[6:, 1:6])
 plt.xlim(0,2.6)
 plt.ylim(0.98, 1.5)
 plt.xlabel(r'p$_\mathsf{T}$ [GeV]')
 
 plt.plot(pT_above_plus_smash_rhic[1:14], dN_music_above_plus_smash_rhic[1:14] / music_above_rebin_smash_rhic, label = '(MUSIC$_\mathsf{QGP}$ + SMASH) / MUSIC$_\mathsf{QGP}$', ls = '--', color = 'C2')
 plt.axhline(1.0, ls = ':', color = 'C1')
-plt.fill_between(pT_above_plus_hydro120_rhic[:14], dN_music_above_plus_hydro120_rhic[:14] / music_above_rebin_music120_rhic, dN_music_above_plus_hydro140_rhic[:14] / music_above_rebin_music140_rhic, label = '(MUSIC$_\mathsf{QGP}$+ MUSIC$_\mathsf{HRG}$) / MUSIC$_\mathsf{QGP}$', alpha = 0.8, color = 'C0', lw = 0)
+plt.fill_between(pT_above_plus_hydro120_rhic[:14], dN_music_above_plus_hydro120_rhic[:14] / music_above_rebin_music120_rhic, dN_music_above_plus_hydro140_rhic[:14] / music_above_rebin_music140_rhic, label = '(MUSIC$_\mathsf{QGP}$+ MUSIC$_\mathsf{HRG}$) / MUSIC$_\mathsf{QGP}$', alpha = 1.0, color = 'C0', lw = 0)
 
 plt.legend(frameon=False)
-plt.figtext(0.12, 0.42, '      Au + Au\n' + r'$\mathbf{\sqrt{s}}$ = 200.0 GeV', fontweight = 'bold')
+plt.figtext(0.115, 0.51, 'Au + Au\n' + r'$\mathbf{\sqrt{s}}$ = 200 GeV', fontweight = 'bold')
 
 # LHC
-plt.subplot(gs[:7 , 6:])
+plt.subplot(gs[:6 , 6:])
 plt.xscale('linear')
 plt.yscale('log')
 plt.xticks([])
@@ -124,10 +124,10 @@ plt.ylim(1e-3,1.5e1)
 
 plt.plot(pT_above_lhc, dN_music_above_lhc, label=r"MUSIC$_\mathsf{QGP}$", ls = ':', color = 'C1')
 plt.plot(pT_above_plus_smash_lhc, dN_music_above_plus_smash_lhc, ls = '--', label='MUSIC$_\mathsf{QGP}$ + ' + 'SMASH', color = 'C2')
-plt.fill_between(pT_above_plus_hydro120_lhc, dN_music_above_plus_hydro140_lhc, dN_music_above_plus_hydro120_lhc, alpha = 0.8, label = 'MUSIC$_\mathsf{QGP}$ + MUSIC$_\mathsf{HRG}$', lw = 0, color='C0')
+plt.fill_between(pT_above_plus_hydro120_lhc, dN_music_above_plus_hydro140_lhc, dN_music_above_plus_hydro120_lhc, alpha = 1.0, label = 'MUSIC$_\mathsf{QGP}$ + MUSIC$_\mathsf{HRG}$', lw = 0, color='C0')
 plt.legend(fontsize=10, frameon=False, loc = 'upper right')
 
-plt.subplot(gs[7:, 6:])
+plt.subplot(gs[6:, 6:])
 plt.xlim(0,2.6)
 plt.xlabel(r'p$_\mathsf{T}$ [GeV]')
 plt.yticks([])
@@ -136,10 +136,10 @@ plt.ylim(0.98, 1.5)
 
 plt.plot(pT_above_plus_smash_lhc[1:14], dN_music_above_plus_smash_lhc[1:14] / music_above_rebin_smash_lhc, label = '(MUSIC$_\mathsf{QGP}$ + SMASH) / MUSIC$_\mathsf{QGP}$', ls = '--', color = 'C2')
 plt.axhline(1.0, ls = ':', color = 'C1')
-plt.fill_between(pT_above_plus_hydro120_lhc[:14], dN_music_above_plus_hydro120_lhc[:14] / music_above_rebin_music120_lhc, dN_music_above_plus_hydro140_lhc[:14] / music_above_rebin_music140_lhc, label = '(MUSIC$_\mathsf{QGP}$+ MUSIC$_\mathsf{HRG}$) / MUSIC$_\mathsf{QGP}$', alpha = 0.8, color = 'C0', lw = 0)
+plt.fill_between(pT_above_plus_hydro120_lhc[:14], dN_music_above_plus_hydro120_lhc[:14] / music_above_rebin_music120_lhc, dN_music_above_plus_hydro140_lhc[:14] / music_above_rebin_music140_lhc, label = '(MUSIC$_\mathsf{QGP}$+ MUSIC$_\mathsf{HRG}$) / MUSIC$_\mathsf{QGP}$', alpha = 1.0, color = 'C0', lw = 0)
 
 plt.legend(frameon=False, loc = 'upper right')
-plt.figtext(0.57, 0.42, '       Pb + Pb\n' + r'$\mathbf{\sqrt{s}}$ = 2760.0 GeV', fontweight = 'bold')
+plt.figtext(0.56, 0.51, 'Pb + Pb\n' + r'$\mathbf{\sqrt{s}}$ = 2760 GeV', fontweight = 'bold')
 
 plt.tight_layout(w_pad=-5.0, h_pad=-0.5)
 plt.savefig("spectra_sum.pdf")

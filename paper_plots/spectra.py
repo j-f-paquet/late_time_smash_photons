@@ -98,7 +98,8 @@ plt.fill_between(pT_music_rhic, dN_music_140_150_brem_rhic, dN_music_120_150_bre
 plt.plot(pT_music_rhic, dN_music_above_Tfr_rhic, label=r"MUSIC$_\mathsf{QGP}$", color='C2', ls = ':')
 
 plt.legend(frameon=False)
-plt.figtext(0.12, 0.17, '      Au + Au\n' + r'$\mathbf{\sqrt{s}}$ = 200.0 GeV', fontweight = 'bold')
+plt.figtext(0.115, 0.19, 'Au + Au\n' + r'$\mathbf{\sqrt{s}}$ = 200 GeV', fontweight = 'bold')
+# plt.figtext(0.12, 0.19, '      Au + Au\n' + r'$\mathbf{\sqrt{s}}$ = 200.0 GeV', fontweight = 'bold')
 
 # LHC
 plt.subplot(gs[: , 6:])
@@ -128,7 +129,8 @@ plt.plot(pT_music_lhc, dN_music_above_Tfr_lhc, label=r"MUSIC$_\mathsf{QGP}$", co
 
 
 plt.legend(frameon=False)
-plt.figtext(0.57, 0.17, '       Pb + Pb\n' + r'$\mathbf{\sqrt{s}}$ = 2760.0 GeV', fontweight = 'bold')
+plt.figtext(0.56, 0.19, 'Pb + Pb\n' + r'$\mathbf{\sqrt{s}}$ = 2760 GeV', fontweight = 'bold')
+# plt.figtext(0.57, 0.19, '       Pb + Pb\n' + r'$\mathbf{\sqrt{s}}$ = 2760.0 GeV', fontweight = 'bold')
 
 
 plt.tight_layout(w_pad=-5.0)

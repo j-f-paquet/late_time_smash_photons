@@ -112,13 +112,13 @@ plot_dict_lhc={
 box = dict(facecolor='white', edgecolor='black', linewidth=0.8)
 
 gs = gridspec.GridSpec(9,11)
-common_plotting.load_plotting_style_paper_v2_panel()
+common_plotting.load_plotting_style_paper()
 plt.figure()
 
 # RHIC
 
-plt.subplot(gs[:3 , 1:6])
-plt.title(r'Au + Au @ $\sqrt{s}$ = 200.0 GeV')
+ax1 = plt.subplot(gs[:3 , 1:6])
+plt.title(r'Au + Au @ $\sqrt{s}$ = 200 GeV')
 smash_calc=plot_dict_rhic['late_22']['smash_calcs']
 plt.plot(smash_calc[0], 100.0 * smash_calc[1], color = 'C2', label = 'SMASH', ls = '-')
 plt.fill_between(smash_calc[0], 100.0 * (smash_calc[1] - smash_calc[2]), 100.0 * (smash_calc[1] + smash_calc[2]), alpha = 0.5, color = 'C2', lw = 0)
@@ -128,9 +128,11 @@ plt.legend(frameon = False, loc = 'upper left')
 plt.xlim(0,2.6)
 plt.ylim(-2,25.0)
 plt.xticks([])
-plt.figtext(0.47, 0.8958, '2$\leftrightarrow$2 Scatterings', fontweight = 'bold', bbox=box)
+plt.yticks([0,5,10,15,20,25])
+# ax1.minorticks_on()
+plt.figtext(0.462, 0.867, '2$\leftrightarrow$2 Scatterings', fontweight = 'bold', bbox=box)
 
-plt.subplot(gs[3:6 , 1:6])
+ax2 = plt.subplot(gs[3:6 , 1:6])
 smash_calc=plot_dict_rhic['late_brem']['smash_calcs']
 plt.plot(smash_calc[0], 100.0 * smash_calc[1], color = 'C2', label = 'SMASH', ls = '-')
 plt.fill_between(smash_calc[0], 100.0 * (smash_calc[1] - smash_calc[2]), 100.0 * (smash_calc[1] + smash_calc[2]), alpha = 0.5, color = 'C2', lw = 0)
@@ -140,10 +142,12 @@ plt.fill_between(music_calc[0], 100.0 * music_calc[1], 100.0 * music_calc[2], al
 plt.xlim(0,2.6)
 plt.ylim(-2,25.0)
 plt.xticks([])
+plt.yticks([0,5,10,15,20,25])
+# ax2.minorticks_on()
 plt.ylabel(r'v$_2^{\gamma, \mathsf{SP}}$ [%]')
-plt.figtext(0.475, 0.6304, 'Bremsstrahlung', fontweight = 'bold', bbox=box)
+plt.figtext(0.467, 0.61505, 'Bremsstrahlung', fontweight = 'bold', bbox=box)
 
-plt.subplot(gs[6:9 , 1:6])
+ax3 = plt.subplot(gs[6:9 , 1:6])
 smash_calc=plot_dict_rhic['late_tot']['smash_calcs']
 plt.plot(smash_calc[0], 100.0 * smash_calc[1], color = 'C2', label = 'SMASH', ls = '-')
 plt.fill_between(smash_calc[0], 100.0 * (smash_calc[1] - smash_calc[2]), 100.0 * (smash_calc[1] + smash_calc[2]), alpha = 0.5, color = 'C2', lw = 0)
@@ -151,14 +155,15 @@ music_calc=plot_dict_rhic['late_tot']['music_calcs_short']
 plt.fill_between(music_calc[0], 100.0 * music_calc[1], 100.0 * music_calc[2], alpha=1.0, color = 'C0', label = 'MUSIC$_\mathsf{HRG}$', lw = 2.0)
 # plt.legend(frameon = False, loc = 'upper left')
 plt.xlim(0,2.6)
-plt.ylim(-2,25.0)
+plt.yticks([0,5,10,15,20,25])
+# ax3.minorticks_on()
 plt.xlabel(r'p$_\mathsf{T}$ [GeV]')
-plt.figtext(0.523, 0.364, 'Total', fontweight = 'bold', bbox=box)
+plt.figtext(0.519, 0.3615, 'Total', fontweight = 'bold', bbox=box)
 
 # LHC
 
-plt.subplot(gs[:3 , 6:])
-plt.title(r'Pb + Pb @ $\sqrt{s}$ = 2760.0 GeV')
+ax4 = plt.subplot(gs[:3 , 6:])
+plt.title(r'Pb + Pb @ $\sqrt{s}$ = 2760 GeV')
 smash_calc=plot_dict_lhc['late_22']['smash_calcs']
 plt.plot(smash_calc[0], 100.0 * smash_calc[1], color = 'C2', label = 'SMASH', ls = '-')
 plt.fill_between(smash_calc[0], 100.0 * (smash_calc[1] - smash_calc[2]), 100.0 * (smash_calc[1] + smash_calc[2]), alpha = 0.5, color = 'C2', lw = 0)
@@ -168,10 +173,11 @@ plt.fill_between(music_calc[0], 100.0 * music_calc[1], 100.0 * music_calc[2], al
 plt.xlim(0,2.6)
 plt.ylim(-2,25.0)
 plt.xticks([])
-plt.yticks([])
+plt.yticks([0,5,10,15,20,25])
+ax4.set_yticklabels([])
 # plt.figtext(0.83, 0.89, '2$\leftrightarrow$2 Scatterings', fontweight = 'bold')
 
-plt.subplot(gs[3:6 , 6:])
+ax5 = plt.subplot(gs[3:6 , 6:])
 smash_calc=plot_dict_lhc['late_brem']['smash_calcs']
 plt.plot(smash_calc[0], 100.0 * smash_calc[1], color = 'C2', label = 'SMASH', ls = '-')
 plt.fill_between(smash_calc[0], 100.0 * (smash_calc[1] - smash_calc[2]), 100.0 * (smash_calc[1] + smash_calc[2]), alpha = 0.5, color = 'C2', lw = 0)
@@ -181,10 +187,11 @@ plt.fill_between(music_calc[0], 100.0 * music_calc[1], 100.0 * music_calc[2], al
 plt.xlim(0,2.6)
 plt.ylim(-2,25.0)
 plt.xticks([])
-plt.yticks([])
+plt.yticks([0,5,10,15,20,25])
+ax5.set_yticklabels([])
 # plt.figtext(0.835, 0.63, 'Bremsstrahlung', fontweight = 'bold')
 
-plt.subplot(gs[6:9 , 6:])
+ax6 = plt.subplot(gs[6:9 , 6:])
 smash_calc=plot_dict_lhc['late_tot']['smash_calcs']
 plt.plot(smash_calc[0], 100.0 * smash_calc[1], color = 'C2', label = 'SMASH', ls = '-')
 plt.fill_between(smash_calc[0], 100.0 * (smash_calc[1] - smash_calc[2]), 100.0 * (smash_calc[1] + smash_calc[2]), alpha = 0.5, color = 'C2', lw = 0)
@@ -194,6 +201,8 @@ plt.fill_between(music_calc[0], 100.0 * music_calc[1], 100.0 * music_calc[2], al
 plt.xlim(0,2.6)
 plt.ylim(-2,25.0)
 plt.yticks([])
+plt.yticks([0,5,10,15,20,25])
+ax6.set_yticklabels([])
 plt.xlabel(r'p$_\mathsf{T}$ [GeV]')
 # plt.figtext(0.93, 0.36, 'Total', fontweight = 'bold')
 

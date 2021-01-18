@@ -48,7 +48,7 @@ pT_above_plus_hydro120_lhc, dN_music_above_plus_hydro120_lhc, v1_music_above_plu
 
 gs = gridspec.GridSpec(10,12)
 
-common_plotting.load_plotting_style_v2_sum()
+common_plotting.load_plotting_style_paper()
 
 plt.figure()
 # RHIC
@@ -56,9 +56,10 @@ plt.subplot(gs[: , 1:6])
 plt.xscale('linear')
 plt.yscale('linear')
 plt.xlim(0,2.6)
-plt.ylim(0.0,2.5)
+plt.ylim(0.5,2.5)
 plt.xlabel(r'p$_\mathsf{T}$ [GeV]')
 plt.ylabel(r'v$_2^{\gamma, \mathsf{SP}}$ [%]')
+plt.yticks([0.5, 1, 1.5, 2, 2.5])
 
 # SMASH
 plt.plot(pT_above_rhic, 100.0 * v2_above_rhic, label=r"MUSIC$_\mathsf{QGP}$", ls = ':', color = 'C1')
@@ -66,17 +67,17 @@ plt.plot(pT_above_plus_smash_rhic, 100.0 * v2_music_above_plus_smash_rhic, ls = 
 # MUSIC
 plt.fill_between(pT_above_plus_hydro140_rhic,  100.0 * v2_music_above_plus_hydro140_rhic,  100.0 * v2_music_above_plus_hydro120_rhic, color='C0', label = 'MUSIC$_\mathsf{QGP}$ + MUSIC$_\mathsf{HRG}$', lw = 0)
 plt.legend(frameon = False, loc = 'upper left')
-plt.figtext(0.35, 0.25, '      Au + Au\n' + r'$\mathbf{\sqrt{s}}$ = 200.0 GeV', fontweight = 'bold')
+plt.figtext(0.37, 0.19, '         Au + Au\n' + r'$\mathbf{\sqrt{s}}$ = 200 GeV', fontweight = 'bold')
 
 # LHC
 plt.subplot(gs[: , 7:])
 plt.xscale('linear')
 plt.yscale('linear')
 plt.xlim(0,2.6)
-plt.ylim(1.5,5.5)
+plt.ylim(1.5,4.5)
 plt.xlabel(r'p$_\mathsf{T}$ [GeV]')
 # plt.ylabel(r'v$_2^{\gamma, \mathsf{SP}}$ [%]')
-plt.yticks([1.5, 2.5, 3.5, 4.5, 5.5])
+plt.yticks([1.5,2.5,3.5,4.5])
 
 # SMASH
 plt.plot(pT_above_lhc, 100.0 * v2_above_lhc, label=r"MUSIC$_\mathsf{QGP}$", ls = ':', color = 'C1')
@@ -84,7 +85,7 @@ plt.plot(pT_above_plus_smash_lhc, 100.0 * v2_music_above_plus_smash_lhc, ls = '-
 # MUSIC
 plt.fill_between(pT_above_plus_hydro140_lhc,  100.0 * v2_music_above_plus_hydro140_lhc,  100.0 * v2_music_above_plus_hydro120_lhc, color='C0', label = 'MUSIC$_\mathsf{QGP}$ + MUSIC$_\mathsf{HRG}$', lw = 0)
 plt.legend(frameon = False, loc = 'upper left')
-plt.figtext(0.81, 0.25, '       Pb + Pb\n' + r'$\mathbf{\sqrt{s}}$ = 2760.0 GeV', fontweight = 'bold')
+plt.figtext(0.83, 0.19, '           Pb + Pb\n' + r'$\mathbf{\sqrt{s}}$ = 2760 GeV', fontweight = 'bold')
 
 
 
