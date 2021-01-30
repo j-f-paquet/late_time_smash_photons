@@ -130,7 +130,7 @@ plt.ylim(-2,25.0)
 plt.xticks([])
 plt.yticks([0,5,10,15,20,25])
 # ax1.minorticks_on()
-plt.figtext(0.462, 0.867, '2$\leftrightarrow$2 Scatterings', fontweight = 'bold', bbox=box)
+plt.figtext(0.462, 0.868, '2$\leftrightarrow$2 Scatterings', fontweight = 'bold', bbox=box)
 
 ax2 = plt.subplot(gs[3:6 , 1:6])
 smash_calc=plot_dict_rhic['late_brem']['smash_calcs']
@@ -145,7 +145,7 @@ plt.xticks([])
 plt.yticks([0,5,10,15,20,25])
 # ax2.minorticks_on()
 plt.ylabel(r'v$_2^{\gamma, \mathsf{SP}}$ [%]')
-plt.figtext(0.467, 0.61505, 'Bremsstrahlung', fontweight = 'bold', bbox=box)
+plt.figtext(0.467, 0.613, 'Bremsstrahlung', fontweight = 'bold', bbox=box)
 
 ax3 = plt.subplot(gs[6:9 , 1:6])
 smash_calc=plot_dict_rhic['late_tot']['smash_calcs']
@@ -158,7 +158,7 @@ plt.xlim(0,2.6)
 plt.yticks([0,5,10,15,20,25])
 # ax3.minorticks_on()
 plt.xlabel(r'p$_\mathsf{T}$ [GeV]')
-plt.figtext(0.519, 0.3615, 'Total', fontweight = 'bold', bbox=box)
+plt.figtext(0.519, 0.356, 'Total', fontweight = 'bold', bbox=box)
 
 # LHC
 
@@ -206,6 +206,6 @@ ax6.set_yticklabels([])
 plt.xlabel(r'p$_\mathsf{T}$ [GeV]')
 # plt.figtext(0.93, 0.36, 'Total', fontweight = 'bold')
 
-plt.tight_layout(h_pad=-0.1, w_pad=-3.8)
+plt.tight_layout(h_pad=-0.1, w_pad=-3.4)
 plt.savefig("v2.pdf")
 plt.close()

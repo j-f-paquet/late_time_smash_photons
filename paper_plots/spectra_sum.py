@@ -92,7 +92,8 @@ plt.yscale('log')
 plt.xticks([])
 plt.xlim(0,2.6)
 plt.ylim(1e-3,1.5e1)
-plt.ylabel(r'1/(2$\pi$p$_\mathrm{T}$) dN$_\gamma$/dp$_\mathrm{T} |_{y =0}$ [Gev$^{-2}$]        ', fontsize = 13.5)
+plt.ylabel(r'$\frac{1}{2 \pi \mathrm{p_T}} \frac{\mathrm{d^2N}}{\mathrm{dp_T d_y}}$|$_{\mathrm{y=0}}$ [Gev$^{-2}$]')
+# plt.ylabel(r'1/(2$\pi$p$_\mathrm{T}$) dN$_\gamma$/dp$_\mathrm{T} |_{y =0}$ [Gev$^{-2}$]        ', fontsize = 13.5)
 
 plt.plot(pT_above_rhic, dN_music_above_rhic, label=r"MUSIC$_\mathsf{QGP}$", ls = ':', color = 'C1')
 plt.plot(pT_above_plus_smash_rhic, dN_music_above_plus_smash_rhic, ls = '--', label='MUSIC$_\mathsf{QGP}$ + ' + 'SMASH', color = 'C2')
@@ -141,6 +142,6 @@ plt.fill_between(pT_above_plus_hydro120_lhc[:14], dN_music_above_plus_hydro120_l
 plt.legend(frameon=False, loc = 'upper right')
 plt.figtext(0.56, 0.51, 'Pb + Pb\n' + r'$\mathbf{\sqrt{s}}$ = 2760 GeV', fontweight = 'bold')
 
-plt.tight_layout(w_pad=-5.0, h_pad=-0.5)
+plt.tight_layout(w_pad=-5.7, h_pad=-0.5)
 plt.savefig("spectra_sum.pdf")
 plt.close()

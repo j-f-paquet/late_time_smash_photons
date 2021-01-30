@@ -90,6 +90,6 @@ plt.figtext(0.83, 0.19, '           Pb + Pb\n' + r'$\mathbf{\sqrt{s}}$ = 2760 Ge
 
 
 
-plt.tight_layout(w_pad=-6.8, h_pad=-0.5)
+plt.tight_layout(w_pad=-6.2, h_pad=-0.5)
 plt.savefig("v2_sum.pdf")
 plt.close()

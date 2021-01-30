@@ -80,7 +80,8 @@ plt.yscale('log')
 plt.xlim(0,4)
 plt.ylim(1e-5,1e1)
 plt.xlabel(r'p$_\mathsf{T}$ [GeV]')
-plt.ylabel(r'1/(2$\pi$ p$_\mathrm{T}$) dN$_\gamma$/dp$_\mathrm{T} |_{y =0}$ [Gev$^{-2}$]')
+plt.ylabel(r'$\frac{1}{2 \pi \mathrm{p_T}} \frac{\mathrm{d^2N}}{\mathrm{dp_T d_y}}$|$_{\mathrm{y=0}}$ [Gev$^{-2}$]')
+# plt.ylabel(r'1/(2$\pi$ p$_\mathrm{T}$) dN$_\gamma$/dp$_\mathrm{T} |_{y =0}$ [Gev$^{-2}$]')
 
 # SMASH
 plt.plot(pT_smash_rhic[::3], dN_22_rhic[::3], ls = '-', label = r'SMASH: 2$\leftrightarrow$2 Scatterings', color = 'C0')
@@ -96,9 +97,10 @@ plt.fill_between(pT_music_rhic, dN_music_140_150_brem_rhic, dN_music_120_150_bre
 
 # MUSIC QGP
 plt.plot(pT_music_rhic, dN_music_above_Tfr_rhic, label=r"MUSIC$_\mathsf{QGP}$", color='C2', ls = ':')
+plt.xticks([0,1,2,3,4])
 
 plt.legend(frameon=False)
-plt.figtext(0.115, 0.19, 'Au + Au\n' + r'$\mathbf{\sqrt{s}}$ = 200 GeV', fontweight = 'bold')
+plt.figtext(0.115, 0.18, 'Au + Au\n' + r'$\mathbf{\sqrt{s}}$ = 200 GeV', fontweight = 'bold')
 # plt.figtext(0.12, 0.19, '      Au + Au\n' + r'$\mathbf{\sqrt{s}}$ = 200.0 GeV', fontweight = 'bold')
 
 # LHC
@@ -129,10 +131,11 @@ plt.plot(pT_music_lhc, dN_music_above_Tfr_lhc, label=r"MUSIC$_\mathsf{QGP}$", co
 
 
 plt.legend(frameon=False)
-plt.figtext(0.56, 0.19, 'Pb + Pb\n' + r'$\mathbf{\sqrt{s}}$ = 2760 GeV', fontweight = 'bold')
+plt.figtext(0.56, 0.18, 'Pb + Pb\n' + r'$\mathbf{\sqrt{s}}$ = 2760 GeV', fontweight = 'bold')
+plt.xticks([0,1,2,3,4])
 # plt.figtext(0.57, 0.19, '       Pb + Pb\n' + r'$\mathbf{\sqrt{s}}$ = 2760.0 GeV', fontweight = 'bold')
 
 
-plt.tight_layout(w_pad=-5.0)
+plt.tight_layout(w_pad=-5.5)
 plt.savefig("spectra.pdf")
 plt.close()
