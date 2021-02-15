@@ -113,6 +113,10 @@ box = dict(facecolor='white', edgecolor='black', linewidth=0.8)
 
 gs = gridspec.GridSpec(9,11)
 common_plotting.load_plotting_style_paper()
+#Make this figure higher than the others and adjust fonts, for readability
+mpl.rcParams['figure.figsize'] = 10*0.6, 5.3*0.8*1.6
+# mpl.rcParams['axes.labelsize'] = 15
+# mpl.rcParams['legend.fontsize'] = 11
 plt.figure()
 
 # RHIC
@@ -126,11 +130,11 @@ music_calc=plot_dict_rhic['late_22']['music_calcs_short']
 plt.fill_between(music_calc[0], 100.0 * music_calc[1], 100.0 * music_calc[2], alpha=1.0, color = 'C0', label = 'MUSIC$_\mathsf{HRG}$', lw = 2.0)
 plt.legend(frameon = False, loc = 'upper left')
 plt.xlim(0,2.6)
-plt.ylim(-2,25.0)
+plt.ylim(-2,20.0)
 plt.xticks([])
-plt.yticks([0,5,10,15,20,25])
+# plt.yticks([0,5,10,15,20,25])
 # ax1.minorticks_on()
-plt.figtext(0.462, 0.868, '2$\leftrightarrow$2 Scatterings', fontweight = 'bold', bbox=box)
+plt.figtext(0.435, 0.91725, '2$\leftrightarrow$2 Scatterings', fontweight = 'bold', bbox=box)
 
 ax2 = plt.subplot(gs[3:6 , 1:6])
 smash_calc=plot_dict_rhic['late_brem']['smash_calcs']
@@ -140,12 +144,12 @@ music_calc=plot_dict_rhic['late_brem']['music_calcs_short']
 plt.fill_between(music_calc[0], 100.0 * music_calc[1], 100.0 * music_calc[2], alpha=1.0, color = 'C0', label = 'MUSIC$_\mathsf{HRG}$', lw = 2.0)
 # plt.legend(frameon = False, loc = 'upper left')
 plt.xlim(0,2.6)
-plt.ylim(-2,25.0)
+plt.ylim(0,20.0)
 plt.xticks([])
-plt.yticks([0,5,10,15,20,25])
+# plt.yticks([0,5,10,15,20,25])
 # ax2.minorticks_on()
 plt.ylabel(r'v$_2^{\gamma, \mathsf{SP}}$ [%]')
-plt.figtext(0.467, 0.613, 'Bremsstrahlung', fontweight = 'bold', bbox=box)
+plt.figtext(0.445, 0.6316, 'Bremsstrahlung', fontweight = 'bold', bbox=box)
 
 ax3 = plt.subplot(gs[6:9 , 1:6])
 smash_calc=plot_dict_rhic['late_tot']['smash_calcs']
@@ -155,15 +159,16 @@ music_calc=plot_dict_rhic['late_tot']['music_calcs_short']
 plt.fill_between(music_calc[0], 100.0 * music_calc[1], 100.0 * music_calc[2], alpha=1.0, color = 'C0', label = 'MUSIC$_\mathsf{HRG}$', lw = 2.0)
 # plt.legend(frameon = False, loc = 'upper left')
 plt.xlim(0,2.6)
-plt.yticks([0,5,10,15,20,25])
+plt.ylim(0,20.0)
+# plt.yticks([0,5,10,15,20,25])
 # ax3.minorticks_on()
 plt.xlabel(r'p$_\mathsf{T}$ [GeV]')
-plt.figtext(0.519, 0.356, 'Total', fontweight = 'bold', bbox=box)
+plt.figtext(0.51, 0.3452, 'Total', fontweight = 'bold', bbox=box)
 
 # LHC
 
 ax4 = plt.subplot(gs[:3 , 6:])
-plt.title(r'Pb + Pb @ $\sqrt{s}$ = 2760 GeV')
+plt.title(r'Pb + Pb @ $\sqrt{s}$ = 2.76 GeV')
 smash_calc=plot_dict_lhc['late_22']['smash_calcs']
 plt.plot(smash_calc[0], 100.0 * smash_calc[1], color = 'C2', label = 'SMASH', ls = '-')
 plt.fill_between(smash_calc[0], 100.0 * (smash_calc[1] - smash_calc[2]), 100.0 * (smash_calc[1] + smash_calc[2]), alpha = 0.5, color = 'C2', lw = 0)
@@ -171,9 +176,9 @@ music_calc=plot_dict_lhc['late_22']['music_calcs_short']
 plt.fill_between(music_calc[0], 100.0 * music_calc[1], 100.0 * music_calc[2], alpha=1.0, color = 'C0', label = 'MUSIC$_\mathsf{HRG}$', lw = 2.0)
 # plt.legend(frameon = False, loc = 'upper left')
 plt.xlim(0,2.6)
-plt.ylim(-2,25.0)
+plt.ylim(-2,20.0)
 plt.xticks([])
-plt.yticks([0,5,10,15,20,25])
+# plt.yticks([0,5,10,15,20,25])
 ax4.set_yticklabels([])
 # plt.figtext(0.83, 0.89, '2$\leftrightarrow$2 Scatterings', fontweight = 'bold')
 
@@ -185,9 +190,9 @@ music_calc=plot_dict_lhc['late_brem']['music_calcs_short']
 plt.fill_between(music_calc[0], 100.0 * music_calc[1], 100.0 * music_calc[2], alpha=1.0, color = 'C0', label = 'MUSIC$_\mathsf{HRG}$', lw = 2.0)
 # plt.legend(frameon = False, loc = 'upper left')
 plt.xlim(0,2.6)
-plt.ylim(-2,25.0)
+plt.ylim(0,20.0)
 plt.xticks([])
-plt.yticks([0,5,10,15,20,25])
+# plt.yticks([0,5,10,15,20,25])
 ax5.set_yticklabels([])
 # plt.figtext(0.835, 0.63, 'Bremsstrahlung', fontweight = 'bold')
 
@@ -199,13 +204,13 @@ music_calc=plot_dict_lhc['late_tot']['music_calcs_short']
 plt.fill_between(music_calc[0], 100.0 * music_calc[1], 100.0 * music_calc[2], alpha=1.0, color = 'C0', label = 'MUSIC$_\mathsf{HRG}$', lw = 2.0)
 # plt.legend(frameon = False, loc = 'upper left')
 plt.xlim(0,2.6)
-plt.ylim(-2,25.0)
-plt.yticks([])
-plt.yticks([0,5,10,15,20,25])
+plt.ylim(0,20.0)
+# plt.yticks([])
+# plt.yticks([0,5,10,15,20,25])
 ax6.set_yticklabels([])
 plt.xlabel(r'p$_\mathsf{T}$ [GeV]')
 # plt.figtext(0.93, 0.36, 'Total', fontweight = 'bold')
 
-plt.tight_layout(h_pad=-0.1, w_pad=-3.4)
+plt.tight_layout(h_pad=-0.2, w_pad=-3.6)
 plt.savefig("v2.pdf")
 plt.close()

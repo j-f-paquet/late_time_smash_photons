@@ -99,7 +99,7 @@ plt.ylim(-1.5,11)
 # LHC
 ################
 plt.subplot(gs[:5 , 6:])
-plt.title(r'Pb + Pb @ $\sqrt{s}$ = 2760 GeV')
+plt.title(r'Pb + Pb @ $\sqrt{s}$ = 2.76 TeV')
 plt.plot(ydata_lhc[0], ydata_lhc[1]/(2.0 * np.pi * ydata_lhc[0]), label = r'$\pi^+$')
 plt.plot(ydata_lhc[0], ydata_lhc[7]/(2.0 * np.pi * ydata_lhc[0]), label = r'$K^+$', ls = '--', color = 'C1')
 plt.plot(ydata_lhc[0], ydata_lhc[11]/(2.0 * np.pi * ydata_lhc[0]), label = r'p', ls = '-.', color = 'C2')

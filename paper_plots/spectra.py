@@ -131,7 +131,7 @@ plt.plot(pT_music_lhc, dN_music_above_Tfr_lhc, label=r"MUSIC$_\mathsf{QGP}$", co
 
 
 plt.legend(frameon=False)
-plt.figtext(0.56, 0.18, 'Pb + Pb\n' + r'$\mathbf{\sqrt{s}}$ = 2760 GeV', fontweight = 'bold')
+plt.figtext(0.56, 0.18, 'Pb + Pb\n' + r'$\mathbf{\sqrt{s}}$ = 2.76 TeV', fontweight = 'bold')
 plt.xticks([0,1,2,3,4])
 # plt.figtext(0.57, 0.19, '       Pb + Pb\n' + r'$\mathbf{\sqrt{s}}$ = 2760.0 GeV', fontweight = 'bold')
 

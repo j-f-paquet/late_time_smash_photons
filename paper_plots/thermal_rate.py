@@ -56,7 +56,8 @@ dN_jf_total = raw[:,1]
 gs = gridspec.GridSpec(10,1)
 common_plotting.load_plotting_style_paper()
 import matplotlib as mpl
-mpl.rcParams['figure.figsize'] = 10*0.8*0.7, 5.3*0.8
+mpl.rcParams['figure.figsize'] = 10*0.9*0.7*0.85, 5.3*0.9*0.9*0.85
+# mpl.rcParams['figure.figsize'] = 10*0.8*0.7, 5.3*0.8
 plt.figure()
 plt.subplot(gs[:7 , :])
 plt.xscale('linear')
@@ -94,7 +95,7 @@ plt.fill_between(pT_jf_total, (interp_brem(pT_jf_total)+interp_22(pT_jf_total) -
 plt.axhline(1.0, color = 'grey', lw = 1)
 plt.xlim(0.2,1.5)
 plt.ylim(0.8,1.6)
-plt.xlabel(r'p$_\mathsf{T}$ [GeV]')
+plt.xlabel(r'E [GeV]')
 plt.legend(loc='upper left', frameon=False)
 plt.tight_layout(h_pad = -0.5)
 plt.savefig("thermal_photon_comparison.pdf")

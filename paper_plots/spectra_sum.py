@@ -140,7 +140,7 @@ plt.axhline(1.0, ls = ':', color = 'C1')
 plt.fill_between(pT_above_plus_hydro120_lhc[:14], dN_music_above_plus_hydro120_lhc[:14] / music_above_rebin_music120_lhc, dN_music_above_plus_hydro140_lhc[:14] / music_above_rebin_music140_lhc, label = '(MUSIC$_\mathsf{QGP}$+ MUSIC$_\mathsf{HRG}$) / MUSIC$_\mathsf{QGP}$', alpha = 1.0, color = 'C0', lw = 0)
 
 plt.legend(frameon=False, loc = 'upper right')
-plt.figtext(0.56, 0.51, 'Pb + Pb\n' + r'$\mathbf{\sqrt{s}}$ = 2760 GeV', fontweight = 'bold')
+plt.figtext(0.56, 0.51, 'Pb + Pb\n' + r'$\mathbf{\sqrt{s}}$ = 2.76 TeV', fontweight = 'bold')
 
 plt.tight_layout(w_pad=-5.7, h_pad=-0.5)
 plt.savefig("spectra_sum.pdf")

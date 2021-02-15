@@ -85,7 +85,7 @@ plt.plot(pT_above_plus_smash_lhc, 100.0 * v2_music_above_plus_smash_lhc, ls = '-
 # MUSIC
 plt.fill_between(pT_above_plus_hydro140_lhc,  100.0 * v2_music_above_plus_hydro140_lhc,  100.0 * v2_music_above_plus_hydro120_lhc, color='C0', label = 'MUSIC$_\mathsf{QGP}$ + MUSIC$_\mathsf{HRG}$', lw = 0)
 plt.legend(frameon = False, loc = 'upper left')
-plt.figtext(0.83, 0.19, '           Pb + Pb\n' + r'$\mathbf{\sqrt{s}}$ = 2760 GeV', fontweight = 'bold')
+plt.figtext(0.83, 0.19, '           Pb + Pb\n' + r' $\mathbf{\sqrt{s}}$ = 2.76 TeV', fontweight = 'bold')
 
 
 

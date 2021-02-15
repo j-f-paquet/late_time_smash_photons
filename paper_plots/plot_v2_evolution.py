@@ -100,8 +100,9 @@ def plot_v2_photons(v2_1, v2_5, v2_10, v2_20, v2_50, v2_100, v2_end, output_path
     # plt.ylabel(r'$v_2$ [%]')
     plt.xlabel(r'p$_\mathrm{T}$ [GeV]')
     plt.yticks([])
+    plt.figtext(0.7, 0.82, 'Au + Au\n' + r'$\mathbf{\sqrt{s}}$ = 200 GeV', fontweight = 'bold')
 
-    plt.tight_layout(w_pad=0.0)
+    plt.tight_layout(w_pad=0.09)
     plt.savefig('v2_time_evolution_subplots.pdf')
     plt.close()
 
