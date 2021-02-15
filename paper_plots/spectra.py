@@ -40,7 +40,7 @@ pT_music_rhic, dN_music_120_150_brem_rhic, *rest = raw.T
 
 
 # SMASH LHC
-raw=np.loadtxt("../calcs/photons/smash_calcs/lhc/low_stats/pT_photons_midy.txt")
+raw=np.loadtxt("../calcs/photons/smash_calcs/lhc/high_stats/pT_photons_midy.txt")
 pT_smash_lhc, pre_dN_22_lhc, pre_dN_22_err_lhc, pre_dN_brem_lhc, pre_dN_brem_err_lhc = raw.T
 dN_22_lhc=pre_dN_22_lhc/(2*np.pi*pT_smash_lhc)
 dN_22_err_lhc=pre_dN_22_err_lhc/(2*np.pi*pT_smash_lhc)

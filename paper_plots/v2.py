@@ -64,11 +64,11 @@ plot_dict_rhic={
 
 
 # SMASH LHC
-raw=np.loadtxt("../calcs/photons/smash_calcs/lhc/low_stats/SP_v2_photons_total.txt")
+raw=np.loadtxt("../calcs/photons/smash_calcs/lhc/high_stats/SP_v2_photons_total.txt")
 pT_smash_lhc, v2_tot_lhc, v2_tot_err_lhc = raw.T
-raw=np.loadtxt("../calcs/photons/smash_calcs/lhc/low_stats/SP_v2_photons_2to2.txt")
+raw=np.loadtxt("../calcs/photons/smash_calcs/lhc/high_stats/SP_v2_photons_2to2.txt")
 pT_smash_22_lhc, v2_22_lhc, v2_err_22_lhc = raw.T
-raw=np.loadtxt("../calcs/photons/smash_calcs/lhc/low_stats/SP_v2_photons_Brems.txt")
+raw=np.loadtxt("../calcs/photons/smash_calcs/lhc/high_stats/SP_v2_photons_Brems.txt")
 pT_smash_brem_lhc, v2_brem_lhc, v2_err_brem_lhc = raw.T
 
 # Hydro RHIC
