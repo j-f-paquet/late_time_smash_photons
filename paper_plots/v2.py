@@ -127,7 +127,7 @@ smash_calc=plot_dict_rhic['late_22']['smash_calcs']
 plt.plot(smash_calc[0], 100.0 * smash_calc[1], color = 'C2', label = 'SMASH', ls = '-')
 plt.fill_between(smash_calc[0], 100.0 * (smash_calc[1] - smash_calc[2]), 100.0 * (smash_calc[1] + smash_calc[2]), alpha = 0.5, color = 'C2', lw = 0)
 music_calc=plot_dict_rhic['late_22']['music_calcs_short']
-plt.fill_between(music_calc[0], 100.0 * music_calc[1], 100.0 * music_calc[2], alpha=1.0, color = 'C0', label = 'MUSIC$_\mathsf{HRG}$', lw = 2.0)
+plt.fill_between(music_calc[0], 100.0 * music_calc[1], 100.0 * music_calc[2], alpha=1.0, color = 'C0', label = 'MUSIC$_\mathsf{T \leq 150 \ MeV}$', lw = 2.0)
 plt.legend(frameon = False, loc = 'upper left')
 plt.xlim(0,2.6)
 plt.ylim(-2,20.0)
@@ -141,7 +141,7 @@ smash_calc=plot_dict_rhic['late_brem']['smash_calcs']
 plt.plot(smash_calc[0], 100.0 * smash_calc[1], color = 'C2', label = 'SMASH', ls = '-')
 plt.fill_between(smash_calc[0], 100.0 * (smash_calc[1] - smash_calc[2]), 100.0 * (smash_calc[1] + smash_calc[2]), alpha = 0.5, color = 'C2', lw = 0)
 music_calc=plot_dict_rhic['late_brem']['music_calcs_short']
-plt.fill_between(music_calc[0], 100.0 * music_calc[1], 100.0 * music_calc[2], alpha=1.0, color = 'C0', label = 'MUSIC$_\mathsf{HRG}$', lw = 2.0)
+plt.fill_between(music_calc[0], 100.0 * music_calc[1], 100.0 * music_calc[2], alpha=1.0, color = 'C0', label = 'MUSIC$_\mathsf{T \leq 150 \ MeV}$', lw = 2.0)
 # plt.legend(frameon = False, loc = 'upper left')
 plt.xlim(0,2.6)
 plt.ylim(0,20.0)
@@ -156,7 +156,7 @@ smash_calc=plot_dict_rhic['late_tot']['smash_calcs']
 plt.plot(smash_calc[0], 100.0 * smash_calc[1], color = 'C2', label = 'SMASH', ls = '-')
 plt.fill_between(smash_calc[0], 100.0 * (smash_calc[1] - smash_calc[2]), 100.0 * (smash_calc[1] + smash_calc[2]), alpha = 0.5, color = 'C2', lw = 0)
 music_calc=plot_dict_rhic['late_tot']['music_calcs_short']
-plt.fill_between(music_calc[0], 100.0 * music_calc[1], 100.0 * music_calc[2], alpha=1.0, color = 'C0', label = 'MUSIC$_\mathsf{HRG}$', lw = 2.0)
+plt.fill_between(music_calc[0], 100.0 * music_calc[1], 100.0 * music_calc[2], alpha=1.0, color = 'C0', label = 'MUSIC$_\mathsf{T \leq 150 \ MeV}$', lw = 2.0)
 # plt.legend(frameon = False, loc = 'upper left')
 plt.xlim(0,2.6)
 plt.ylim(0,20.0)
@@ -173,7 +173,7 @@ smash_calc=plot_dict_lhc['late_22']['smash_calcs']
 plt.plot(smash_calc[0], 100.0 * smash_calc[1], color = 'C2', label = 'SMASH', ls = '-')
 plt.fill_between(smash_calc[0], 100.0 * (smash_calc[1] - smash_calc[2]), 100.0 * (smash_calc[1] + smash_calc[2]), alpha = 0.5, color = 'C2', lw = 0)
 music_calc=plot_dict_lhc['late_22']['music_calcs_short']
-plt.fill_between(music_calc[0], 100.0 * music_calc[1], 100.0 * music_calc[2], alpha=1.0, color = 'C0', label = 'MUSIC$_\mathsf{HRG}$', lw = 2.0)
+plt.fill_between(music_calc[0], 100.0 * music_calc[1], 100.0 * music_calc[2], alpha=1.0, color = 'C0', label = 'MUSIC$_\mathsf{T \leq 150 \ MeV}$', lw = 2.0)
 # plt.legend(frameon = False, loc = 'upper left')
 plt.xlim(0,2.6)
 plt.ylim(-2,20.0)
@@ -187,7 +187,7 @@ smash_calc=plot_dict_lhc['late_brem']['smash_calcs']
 plt.plot(smash_calc[0], 100.0 * smash_calc[1], color = 'C2', label = 'SMASH', ls = '-')
 plt.fill_between(smash_calc[0], 100.0 * (smash_calc[1] - smash_calc[2]), 100.0 * (smash_calc[1] + smash_calc[2]), alpha = 0.5, color = 'C2', lw = 0)
 music_calc=plot_dict_lhc['late_brem']['music_calcs_short']
-plt.fill_between(music_calc[0], 100.0 * music_calc[1], 100.0 * music_calc[2], alpha=1.0, color = 'C0', label = 'MUSIC$_\mathsf{HRG}$', lw = 2.0)
+plt.fill_between(music_calc[0], 100.0 * music_calc[1], 100.0 * music_calc[2], alpha=1.0, color = 'C0', label = 'MUSIC$_\mathsf{T \leq 150 \ MeV}$', lw = 2.0)
 # plt.legend(frameon = False, loc = 'upper left')
 plt.xlim(0,2.6)
 plt.ylim(0,20.0)
@@ -201,7 +201,7 @@ smash_calc=plot_dict_lhc['late_tot']['smash_calcs']
 plt.plot(smash_calc[0], 100.0 * smash_calc[1], color = 'C2', label = 'SMASH', ls = '-')
 plt.fill_between(smash_calc[0], 100.0 * (smash_calc[1] - smash_calc[2]), 100.0 * (smash_calc[1] + smash_calc[2]), alpha = 0.5, color = 'C2', lw = 0)
 music_calc=plot_dict_lhc['late_tot']['music_calcs_short']
-plt.fill_between(music_calc[0], 100.0 * music_calc[1], 100.0 * music_calc[2], alpha=1.0, color = 'C0', label = 'MUSIC$_\mathsf{HRG}$', lw = 2.0)
+plt.fill_between(music_calc[0], 100.0 * music_calc[1], 100.0 * music_calc[2], alpha=1.0, color = 'C0', label = 'MUSIC$_\mathsf{T \leq 150 \ MeV}$', lw = 2.0)
 # plt.legend(frameon = False, loc = 'upper left')
 plt.xlim(0,2.6)
 plt.ylim(0,20.0)

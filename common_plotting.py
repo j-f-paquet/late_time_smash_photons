@@ -18,7 +18,7 @@ def load_plotting_style_paper():
     mpl.rcParams['axes.labelsize'] = 14
     mpl.rcParams['xtick.labelsize'] = 10
     mpl.rcParams['ytick.labelsize'] = 10
-    mpl.rcParams['legend.fontsize'] = 9.5
+    mpl.rcParams['legend.fontsize'] = 9.0
     mpl.rcParams['figure.figsize'] = 10*0.8, 5.3*0.8
 
     # colors
