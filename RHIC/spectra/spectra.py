@@ -36,25 +36,25 @@ dN_brem_err=pre_dN_brem_err/(2*np.pi*pT_smash)
 #photons_above_Tfr_nx200/vn_rate_qgp_ideal_LO_AMYfit.dat
 #photons_above_Tfr_nx200/vn_rate_thermal_ideal.dat
 
-raw=np.loadtxt("../../calcs/photons/averaged_hydro_calcs/results/photons_above_Tfr_nx200/AuAu200/C10-20/average_sp.dat")
+raw=np.loadtxt("../../calcs/photons/averaged_hydro_calcs/AuAu200/results/photons_above_Tfr_nx200/AuAu200/C10-20/average_sp.dat")
 pT_music, dN_music_above_Tfr, *rest = raw.T
 
-raw=np.loadtxt("../../calcs/photons/averaged_hydro_calcs/results/22_photons_T140-150_nx200/AuAu200/C10-20/average_sp.dat")
+raw=np.loadtxt("../../calcs/photons/averaged_hydro_calcs/AuAu200/results/22_photons_T140-150_nx200/AuAu200/C10-20/average_sp.dat")
 pT_music, dN_music_140_150_22, *rest = raw.T
 
-raw=np.loadtxt("../../calcs/photons/averaged_hydro_calcs/results/brem_photons_T140-150_nx200/AuAu200/C10-20/average_sp.dat")
+raw=np.loadtxt("../../calcs/photons/averaged_hydro_calcs/AuAu200/results/brem_photons_T140-150_nx200/AuAu200/C10-20/average_sp.dat")
 pT_music, dN_music_140_150_brem, *rest = raw.T
 
-raw=np.loadtxt("../../calcs/photons/averaged_hydro_calcs/results/22_photons_T120-150_nx200/AuAu200/C10-20/average_sp.dat")
+raw=np.loadtxt("../../calcs/photons/averaged_hydro_calcs/AuAu200/results/22_photons_T120-150_nx200/AuAu200/C10-20/average_sp.dat")
 pT_music, dN_music_120_150_22, *rest = raw.T
 
-raw=np.loadtxt("../../calcs/photons/averaged_hydro_calcs/results/brem_photons_T120-150_nx200/AuAu200/C10-20/average_sp.dat")
+raw=np.loadtxt("../../calcs/photons/averaged_hydro_calcs/AuAu200/results/brem_photons_T120-150_nx200/AuAu200/C10-20/average_sp.dat")
 pT_music, dN_music_120_150_brem, *rest = raw.T
 
-raw=np.loadtxt("../../calcs/photons/averaged_hydro_calcs/results/22_photons_T100-150_nx200/AuAu200/C10-20/average_sp.dat")
+raw=np.loadtxt("../../calcs/photons/averaged_hydro_calcs/AuAu200/results/22_photons_T100-150_nx200/AuAu200/C10-20/average_sp.dat")
 pT_music, dN_music_100_150_22, *rest = raw.T
 
-raw=np.loadtxt("../../calcs/photons/averaged_hydro_calcs/results/brem_photons_T100-150_nx200/AuAu200/C10-20/average_sp.dat")
+raw=np.loadtxt("../../calcs/photons/averaged_hydro_calcs/AuAu200/results/brem_photons_T100-150_nx200/AuAu200/C10-20/average_sp.dat")
 pT_music, dN_music_100_150_brem, *rest = raw.T
 
 #####################################
