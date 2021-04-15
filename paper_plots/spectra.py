@@ -84,19 +84,21 @@ plt.ylabel(r'$\frac{1}{2 \pi \mathrm{p_T}} \frac{\mathrm{d^2N}}{\mathrm{dp_T d_y
 # plt.ylabel(r'1/(2$\pi$ p$_\mathrm{T}$) dN$_\gamma$/dp$_\mathrm{T} |_{y =0}$ [Gev$^{-2}$]')
 
 # SMASH
-plt.plot(pT_smash_rhic[::3], dN_22_rhic[::3], ls = '-', label = r'SMASH: 2$\leftrightarrow$2 Scatterings', color = 'C0')
-plt.plot(pT_smash_rhic[::3], dN_brem_rhic[::3], ls = '--', label = 'SMASH: Bremsstrahlung', color = 'C1')
-plt.fill_between(pT_smash_rhic[::3], dN_22_rhic[::3] - dN_22_err_rhic[::3], dN_22_rhic[::3] + dN_22_err_rhic[::3], color = 'C1', alpha = 0.5, lw = 0)
-plt.fill_between(pT_smash_rhic[::3], dN_brem_rhic[::3] - dN_brem_err_rhic[::3], dN_brem_rhic[::3] + dN_brem_err_rhic[::3], color = 'C1', alpha = 0.5, lw = 0)
+# plt.plot(pT_smash_rhic[::3], dN_22_rhic[::3], ls = '-', label = r'SMASH: 2$\leftrightarrow$2 Scatterings', color = 'C0')
+# plt.plot(pT_smash_rhic[::3], dN_brem_rhic[::3], ls = '--', label = 'SMASH: Bremsstrahlung', color = 'C1')
+plt.plot(pT_smash_rhic[::3], dN_22_rhic[::3] + dN_brem_rhic[::3], ls = '-', label = 'SMASH', color = 'C2')
+# plt.fill_between(pT_smash_rhic[::3], dN_22_rhic[::3] - dN_22_err_rhic[::3], dN_22_rhic[::3] + dN_22_err_rhic[::3], color = 'C1', alpha = 0.5, lw = 0)
+# plt.fill_between(pT_smash_rhic[::3], dN_brem_rhic[::3] - dN_brem_err_rhic[::3], dN_brem_rhic[::3] + dN_brem_err_rhic[::3], color = 'C1', alpha = 0.5, lw = 0)
 
 # short range: 120 MeV < T 150 MeV
-plt.fill_between(pT_music_rhic, dN_music_140_150_22_rhic, dN_music_120_150_22_rhic, color = 'C0' , alpha=0.7, label='MUSIC$_\mathsf{T \leq 150 \ MeV}$: 2$\leftrightarrow$2 Scatterings', lw = 0)
-plt.fill_between(pT_music_rhic, dN_music_140_150_brem_rhic, dN_music_120_150_brem_rhic , color = 'C1', alpha=0.7, label='MUSIC$_\mathsf{T \leq 150 \ MeV}$: Bremsstrahlung', lw = 0)
+# plt.fill_between(pT_music_rhic, dN_music_140_150_22_rhic, dN_music_120_150_22_rhic, color = 'C0' , alpha=0.7, label='MUSIC$_\mathsf{T \leq 150 \ MeV}$: 2$\leftrightarrow$2 Scatterings', lw = 0)
+# plt.fill_between(pT_music_rhic, dN_music_140_150_brem_rhic, dN_music_120_150_brem_rhic , color = 'C1', alpha=0.7, label='MUSIC$_\mathsf{T \leq 150 \ MeV}$: Bremsstrahlung', lw = 0)
+plt.fill_between(pT_music_rhic, dN_music_140_150_22_rhic + dN_music_140_150_brem_rhic, dN_music_120_150_22_rhic + dN_music_120_150_brem_rhic , color = 'C0', alpha=1.0, label='MUSIC$_\mathsf{T \leq 150 \ MeV}$: Total', lw = 0)
 # plt.fill_between(pT_music_rhic, dN_music_140_150_22_rhic, dN_music_120_150_22_rhic, color = 'C0' , alpha=0.7, label='MUSIC$_\mathsf{HRG}$: 2$\leftrightarrow$2 Scatterings\n' + '120 MeV < T < 150 MeV', lw = 0)
 # plt.fill_between(pT_music_rhic, dN_music_140_150_brem_rhic, dN_music_120_150_brem_rhic , color = 'C1', alpha=0.7, label='MUSIC$_\mathsf{HRG}$: Bremsstrahlung \n' + '120 MeV < T < 150 MeV', lw = 0)
 
 # MUSIC QGP
-plt.plot(pT_music_rhic, dN_music_above_Tfr_rhic, label=r"MUSIC$_\mathsf{T > 150 \ MeV}$", color='C2', ls = ':')
+plt.plot(pT_music_rhic, dN_music_above_Tfr_rhic, label=r"MUSIC$_\mathsf{T > 150 \ MeV}$", color='C1', ls = ':')
 plt.xticks([0,1,2,3,4])
 
 plt.legend(frameon=False)
@@ -115,19 +117,21 @@ plt.minorticks_off()
 # plt.ylabel(r'1/(2$\pi$ p$_\mathrm{T}$) dN$_\gamma$/dp$_\mathrm{T} |_{y =0}$ [Gev$^{-2}$]')
 
 # SMASH
-plt.plot(pT_smash_lhc[::3], dN_22_lhc[::3], ls = '-', label = r'SMASH: 2$\leftrightarrow$2 Scatterings', color = 'C0')
-plt.plot(pT_smash_lhc[::3], dN_brem_lhc[::3], ls = '--', label = 'SMASH: Bremsstrahlung', color = 'C1')
-plt.fill_between(pT_smash_lhc[::3], dN_22_lhc[::3] - dN_22_err_lhc[::3], dN_22_lhc[::3] + dN_22_err_lhc[::3], color = 'C1', alpha = 0.5, lw = 0)
-plt.fill_between(pT_smash_lhc[::3], dN_brem_lhc[::3] - dN_brem_err_lhc[::3], dN_brem_lhc[::3] + dN_brem_err_lhc[::3], color = 'C1', alpha = 0.5, lw = 0)
+# plt.plot(pT_smash_lhc[::3], dN_22_lhc[::3], ls = '-', label = r'SMASH: 2$\leftrightarrow$2 Scatterings', color = 'C0')
+# plt.plot(pT_smash_lhc[::3], dN_brem_lhc[::3], ls = '--', label = 'SMASH: Bremsstrahlung', color = 'C1')
+plt.plot(pT_smash_lhc[::3], dN_22_lhc[::3] + dN_brem_lhc[::3], ls = '-', label = 'SMASH', color = 'C2')
+# plt.fill_between(pT_smash_lhc[::3], dN_22_lhc[::3] - dN_22_err_lhc[::3], dN_22_lhc[::3] + dN_22_err_lhc[::3], color = 'C1', alpha = 0.5, lw = 0)
+# plt.fill_between(pT_smash_lhc[::3], dN_brem_lhc[::3] - dN_brem_err_lhc[::3], dN_brem_lhc[::3] + dN_brem_err_lhc[::3], color = 'C1', alpha = 0.5, lw = 0)
 
 # short range: 120 MeV < T 150 MeV
-plt.fill_between(pT_music_lhc, dN_music_140_150_22_lhc, dN_music_120_150_22_lhc, color = 'C0' , alpha=0.7, label='MUSIC$_\mathsf{T \leq 150 \ MeV}$: 2$\leftrightarrow$2 Scatterings', lw = 0)
-plt.fill_between(pT_music_lhc, dN_music_140_150_brem_lhc, dN_music_120_150_brem_lhc , color = 'C1', alpha=0.7, label='MUSIC$_\mathsf{T \leq 150 \ MeV}$: Bremsstrahlung', lw = 0)
+# plt.fill_between(pT_music_lhc, dN_music_140_150_22_lhc, dN_music_120_150_22_lhc, color = 'C0' , alpha=0.7, label='MUSIC$_\mathsf{T \leq 150 \ MeV}$: 2$\leftrightarrow$2 Scatterings', lw = 0)
+# plt.fill_between(pT_music_lhc, dN_music_140_150_brem_lhc, dN_music_120_150_brem_lhc , color = 'C1', alpha=0.7, label='MUSIC$_\mathsf{T \leq 150 \ MeV}$: Bremsstrahlung', lw = 0)
+plt.fill_between(pT_music_lhc, dN_music_140_150_22_lhc + dN_music_140_150_brem_lhc, dN_music_120_150_22_lhc + dN_music_120_150_brem_lhc , color = 'C0', alpha=1.0, label='MUSIC$_\mathsf{T \leq 150 \ MeV}$', lw = 0)
 # plt.fill_between(pT_music_lhc, dN_music_140_150_22_lhc, dN_music_120_150_22_lhc, color = 'C0' , alpha=0.7, label='MUSIC$_\mathsf{HRG}$: 2$\leftrightarrow$2 Scatterings\n' + '120 MeV < T < 150 MeV', lw = 0)
 # plt.fill_between(pT_music_lhc, dN_music_140_150_brem_lhc, dN_music_120_150_brem_lhc , color = 'C1', alpha=0.7, label='MUSIC$_\mathsf{HRG}$: Bremsstrahlung \n' + '120 MeV < T < 150 MeV', lw = 0)
 
 # MUSIC QGP
-plt.plot(pT_music_lhc, dN_music_above_Tfr_lhc, label=r"MUSIC$_\mathsf{T > 150 \ MeV}$", color='C2', ls = ':')
+plt.plot(pT_music_lhc, dN_music_above_Tfr_lhc, label=r"MUSIC$_\mathsf{T > 150 \ MeV}$", color='C1', ls = ':')
 
 
 plt.legend(frameon=False)
