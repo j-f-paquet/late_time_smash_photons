@@ -1,0 +1,4 @@
+photon.cpp(535): warning #3180: unrecognized OpenMP #pragma
+  		#pragma omp parallel for collapse(3) shared(discSpectra)
+  		^
+

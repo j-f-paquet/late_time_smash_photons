@@ -38,6 +38,9 @@ thermal_rate_types_below_T150=[
 "photons_T100-150_nx200",
 "photons_T120-150_nx200",
 "photons_T140-150_nx200",
+"photons_T140-150_nx200_before1fm",
+"photons_T140-150_nx200_before5fm",
+"photons_T140-150_nx200_before10fm",
 ]
 
 thermal_rate_above_T150="photons_above_Tfr_nx200"
