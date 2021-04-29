@@ -51,6 +51,8 @@ gs = gridspec.GridSpec(10,12)
 common_plotting.load_plotting_style_paper()
 
 plt.figure()
+import matplotlib as mpl
+mpl.rcParams['figure.figsize'] = 10*0.8, 5.3*0.8
 # RHIC
 plt.subplot(gs[: , 1:6])
 plt.xscale('linear')
@@ -67,7 +69,7 @@ plt.plot(pT_above_plus_smash_rhic, 100.0 * v2_music_above_plus_smash_rhic, ls = 
 # MUSIC
 plt.fill_between(pT_above_plus_hydro140_rhic,  100.0 * v2_music_above_plus_hydro140_rhic,  100.0 * v2_music_above_plus_hydro120_rhic, color='C0', label = 'MUSIC$_\mathsf{T > 150 \ MeV}$ + MUSIC$_\mathsf{T \leq 150 \ MeV}$', lw = 0)
 plt.legend(frameon = False, loc = 'upper left')
-plt.figtext(0.37, 0.18, '         Au + Au\n' + r'$\mathbf{\sqrt{s}}$ = 200 GeV', fontweight = 'bold')
+plt.figtext(0.365, 0.17, '         Au + Au\n' + r'$\mathbf{\sqrt{s}}$ = 200 GeV', fontweight = 'bold')
 
 # LHC
 plt.subplot(gs[: , 7:])
@@ -85,11 +87,9 @@ plt.plot(pT_above_plus_smash_lhc, 100.0 * v2_music_above_plus_smash_lhc, ls = '-
 # MUSIC
 plt.fill_between(pT_above_plus_hydro140_lhc,  100.0 * v2_music_above_plus_hydro140_lhc,  100.0 * v2_music_above_plus_hydro120_lhc, color='C0', label = 'MUSIC$_\mathsf{T > 150 \ MeV}$ + MUSIC$_\mathsf{T \leq 150 \ MeV}$', lw = 0)
 plt.legend(frameon = False, loc = 'upper left')
-plt.figtext(0.82, 0.18, '           Pb + Pb\n' + r' $\mathbf{\sqrt{s}}$ = 2.76 TeV', fontweight = 'bold')
+plt.figtext(0.82, 0.17, '           Pb + Pb\n' + r' $\mathbf{\sqrt{s}}$ = 2.76 TeV', fontweight = 'bold')
 
-
-
-
-plt.tight_layout(w_pad=-6.2, h_pad=-0.5)
+plt.figtext(0.911, 0.962, "SMASH-2.0.1",color = "gray", fontsize = 5.3)
+plt.tight_layout(w_pad=-6.4, h_pad=-0.5)
 plt.savefig("v2_sum.pdf")
 plt.close()

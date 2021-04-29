@@ -22,8 +22,8 @@ result_dict['smash']={
 #    filename:"../../photon_calcs/smash_calcs/rhic/SP_v2_photons_2to2.txt",
 #},
 'tot':{
-    'filename_v2':"../../smash_calcs/rhic/SP_v2_photons_total.txt",
-    'filename_spectra':"../../smash_calcs/rhic/pT_photons_midy.txt",
+    'filename_v2':"../../smash_calcs/rhic/SMASH-2.0.1/SP_v2_photons_total.txt",
+    'filename_spectra':"../../smash_calcs/rhic/SMASH-2.0.1/pT_photons_midy.txt",
 },
 }
 result_dict['hydro']={
@@ -58,7 +58,7 @@ for source, source_dict in result_dict.items():
             dN_22_err=pre_dN_22_err/(2*np.pi*pre_pT)
             dN_brem=pre_dN_brem/(2*np.pi*pre_pT)
             dN_brem_err=pre_dN_brem_err/(2*np.pi*pre_pT)
-            # Sum channels 
+            # Sum channels
             pre_dN=dN_22+dN_brem
             pre_dN_err=dN_22_err+dN_brem_err
             # Rebin the same way as the v2
@@ -77,7 +77,7 @@ for source, source_dict in result_dict.items():
             'dN_err':dN_err,
             'v2':v2
         }
-        
+
 #
 pT_above=result_dict['hydro']['above']['pT']
 dN_above=result_dict['hydro']['above']['dN']
@@ -108,7 +108,7 @@ for source, source_dict in result_dict.items():
 
         if ('hydro' == source)and('above' == channel):
             continue
-       
+
         pT_tmp=result_dict[source][channel]['pT']
         dN_tmp=result_dict[source][channel]['dN']
         dN_tmp_err=result_dict[source][channel]['dN_err']
@@ -187,7 +187,7 @@ for result_name in rate_dict.keys():
 
             # Find all events
             #tmp_ref_dir=os.path.dirname(os.path.dirname(os.path.dirname(get_rate_filelist(result_name,system,cent_class,"1")[0])))
-            tmp_ref_dir=os.path.join("../raw_hydro_calcs/",system,cent_class) 
+            tmp_ref_dir=os.path.join("../raw_hydro_calcs/",system,cent_class)
             all_file_in_local_dir=os.listdir(path=tmp_ref_dir)
             subdir_regex = re.compile('([0-9]+)')
 
@@ -213,7 +213,7 @@ for result_name in rate_dict.keys():
 
                     hadron_Qns_path=get_hadron_Qns_path(system,cent_class,str(event))
 
-                    if (all(file_exists)): 
+                    if (all(file_exists)):
                         if (os.path.isfile(hadron_Qns_path)):
                             event_list.append((cent_class,event))
                         else:
@@ -261,26 +261,26 @@ for result_name in rate_dict.keys():
                     num_event_to_take=int(min_event_per_cent_percent*tmp_weight)
                     #print("pre-batard",sub_cent_class,pre_event_list_dict[sub_cent_class],pre_event_list_dict[sub_cent_class][:num_event_to_take])
                     tmp_event_list=tmp_event_list+pre_event_list_dict[sub_cent_class][:num_event_to_take]
-                    
+
                 event_list_dict[cent_class]=tmp_event_list
                 #print("batard",cent_class,tmp_event_list)
 
                 #exit(1)
 
-        
+
 ##            print(cent_class)
 #        print(event_list_dict.keys())
 #        #print(event_list_dict)
 #        print("miaw")
 #        print(event_list_dict['C0-20'])
-                   
+
 
         for cent_class_label in cent_class_list:
-           
+
             event_list=event_list_dict[cent_class_label]
 
             #print(event_list)
-            
+
             num_events=len(event_list)
 
             print("Averaging ",str(num_events)," events for "+system+" "+cent_class_label)
@@ -346,12 +346,12 @@ for result_name in rate_dict.keys():
                 #        file_list+=fct_name(system,cent_class,str(event))
 
                 # Sum over all channels
-                filename=file_list[0] 
+                filename=file_list[0]
                 result=np.loadtxt(filename)
             ##    pT =  result[:,0]
             ##    print(pT)
                 for photon_file in file_list[1:]:
-                    filename=photon_file 
+                    filename=photon_file
                     #tpT,ty,tyv1c,tyv1s,tyv2c,tyv2s,tyv3c,tyv3s,tyv4c,tyv4s,tyv5c,tyv5s,tyv6c,tyv6s = np.transpose(np.loadtxt(filename))
                     result+=np.loadtxt(filename)
 

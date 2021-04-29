@@ -6,7 +6,7 @@ import sys
 sys.path.append(os.path.dirname(os.path.abspath(__file__)) + '/..')
 import common_plotting
 
-data = np.loadtxt('../calcs/photons/smash_calcs/rhic/integrated_v2_photons.txt', unpack = True)
+data = np.loadtxt('../calcs/photons/smash_calcs/rhic/SMASH-2.0.1/integrated_v2_photons.txt', unpack = True)
 
 common_plotting.load_plotting_style_paper()
 mpl.rcParams['figure.figsize'] = 10*0.9*0.7*0.8, 5.3*0.9*0.9*0.7      # Make it not quite as wide for as long as we don't have LHC results
@@ -19,14 +19,16 @@ plt.fill_between(data[0], 100.0 * (data[1] - data[2]), 100.0 * (data[1] + data[2
 plt.fill_between(data[0], 100.0 * (data[3] - data[4]), 100.0 * (data[3] + data[4]), alpha = 0.5, lw = 0 )
 plt.fill_between(data[0], 100.0 * (data[5] - data[6]), 100.0 * (data[5] + data[6]), alpha = 0.5, lw = 0)
 
-plt.figtext(0.71, 0.24, '         Au + Au\n' + r'$\mathbf{\sqrt{s}}$ = 200 GeV', fontweight = 'bold')
+plt.figtext(0.73, 0.24, '         Au + Au\n' + r'$\mathbf{\sqrt{s}}$ = 200 GeV', fontweight = 'bold')
 
-plt.xlim(0,200)
+plt.xlim(0,60)
 # plt.xscale('log')
 plt.ylim(-1,5)
 plt.xlabel('t [fm]')
 plt.ylabel(r'v$_2^{\mathsf{\ int}, \gamma}$ [%]')
 plt.legend(frameon = False)
+
+plt.figtext(0.88, 0.94, "SMASH-2.0.1",color = "gray", fontsize = 4.2)
 plt.tight_layout()
 plt.savefig('int_v2_photons.pdf')
 plt.close()

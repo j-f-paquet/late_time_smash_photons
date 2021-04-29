@@ -15,7 +15,7 @@ import matplotlib.gridspec as gridspec
 ######################################
 
 # SMASH RHIC
-raw=np.loadtxt("../calcs/photons/smash_calcs/rhic/pT_photons_midy.txt")
+raw=np.loadtxt("../calcs/photons/smash_calcs/rhic/SMASH-2.0.1/pT_photons_midy.txt")
 pT_smash_rhic, pre_dN_22_rhic, pre_dN_22_err_rhic, pre_dN_brem_rhic, pre_dN_brem_err_rhic = raw.T
 dN_22_rhic=pre_dN_22_rhic/(2*np.pi*pT_smash_rhic)
 dN_22_err_rhic=pre_dN_22_err_rhic/(2*np.pi*pT_smash_rhic)
@@ -40,7 +40,7 @@ pT_music_rhic, dN_music_120_150_brem_rhic, *rest = raw.T
 
 
 # SMASH LHC
-raw=np.loadtxt("../calcs/photons/smash_calcs/lhc/high_stats/pT_photons_midy.txt")
+raw=np.loadtxt("../calcs/photons/smash_calcs/lhc/SMASH-2.0.1/pT_photons_midy.txt")
 pT_smash_lhc, pre_dN_22_lhc, pre_dN_22_err_lhc, pre_dN_brem_lhc, pre_dN_brem_err_lhc = raw.T
 dN_22_lhc=pre_dN_22_lhc/(2*np.pi*pT_smash_lhc)
 dN_22_err_lhc=pre_dN_22_err_lhc/(2*np.pi*pT_smash_lhc)
@@ -71,10 +71,12 @@ pT_music_lhc, dN_music_120_150_brem_lhc, *rest = raw.T
 
 common_plotting.load_plotting_style_paper()
 plt.figure()
-gs = gridspec.GridSpec(1,11)
+import matplotlib as mpl
+mpl.rcParams['figure.figsize'] = 10*0.8, 5.3*0.8
+gs = gridspec.GridSpec(1,9)
 
 # RHIC:
-plt.subplot(gs[: , 1:6])
+plt.subplot(gs[: , 1:5])
 plt.xscale('linear')
 plt.yscale('log')
 plt.xlim(0,4)
@@ -102,11 +104,11 @@ plt.plot(pT_music_rhic, dN_music_above_Tfr_rhic, label=r"MUSIC$_\mathsf{T > 150 
 plt.xticks([0,1,2,3,4])
 
 plt.legend(frameon=False)
-plt.figtext(0.115, 0.18, 'Au + Au\n' + r'$\mathbf{\sqrt{s}}$ = 200 GeV', fontweight = 'bold')
+plt.figtext(0.135, 0.16, 'Au + Au\n' + r'$\mathbf{\sqrt{s}}$ = 200 GeV', fontweight = 'bold')
 # plt.figtext(0.12, 0.19, '      Au + Au\n' + r'$\mathbf{\sqrt{s}}$ = 200.0 GeV', fontweight = 'bold')
 
 # LHC
-plt.subplot(gs[: , 6:])
+plt.subplot(gs[: , 5:])
 plt.xscale('linear')
 plt.yscale('log')
 plt.xlim(0,4)
@@ -135,11 +137,11 @@ plt.plot(pT_music_lhc, dN_music_above_Tfr_lhc, label=r"MUSIC$_\mathsf{T > 150 \ 
 
 
 plt.legend(frameon=False)
-plt.figtext(0.56, 0.18, 'Pb + Pb\n' + r'$\mathbf{\sqrt{s}}$ = 2.76 TeV', fontweight = 'bold')
+plt.figtext(0.57, 0.16, 'Pb + Pb\n' + r'$\mathbf{\sqrt{s}}$ = 2.76 TeV', fontweight = 'bold')
 plt.xticks([0,1,2,3,4])
 # plt.figtext(0.57, 0.19, '       Pb + Pb\n' + r'$\mathbf{\sqrt{s}}$ = 2760.0 GeV', fontweight = 'bold')
 
-
+plt.figtext(0.917, 0.96, "SMASH-2.0.1",color = "gray", fontsize = 5.3)
 plt.tight_layout(w_pad=-5.5)
 plt.savefig("spectra.pdf")
 plt.close()

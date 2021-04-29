@@ -16,11 +16,11 @@ from matplotlib import gridspec
 
 # SMASH RHIC
 # SP_v2_photons_2to2.txt  SP_v2_photons_Brems.txt  SP_v2_photons_total.txt
-raw=np.loadtxt("../calcs/photons/smash_calcs/rhic/SP_v2_photons_total.txt")
+raw=np.loadtxt("../calcs/photons/smash_calcs/rhic/SMASH-2.0.1/SP_v2_photons_total.txt")
 pT_smash_rhic, v2_tot_rhic, v2_tot_err_rhic = raw.T
-raw=np.loadtxt("../calcs/photons/smash_calcs/rhic/SP_v2_photons_2to2.txt")
+raw=np.loadtxt("../calcs/photons/smash_calcs/rhic/SMASH-2.0.1/SP_v2_photons_2to2.txt")
 pT_smash_22_rhic, v2_22_rhic, v2_err_22_rhic = raw.T
-raw=np.loadtxt("../calcs/photons/smash_calcs/rhic/SP_v2_photons_Brems.txt")
+raw=np.loadtxt("../calcs/photons/smash_calcs/rhic/SMASH-2.0.1/SP_v2_photons_Brems.txt")
 pT_smash_brem_rhic, v2_brem_rhic, v2_err_brem_rhic = raw.T
 
 # Hydro RHIC
@@ -64,11 +64,11 @@ plot_dict_rhic={
 
 
 # SMASH LHC
-raw=np.loadtxt("../calcs/photons/smash_calcs/lhc/high_stats/SP_v2_photons_total.txt")
+raw=np.loadtxt("../calcs/photons/smash_calcs/lhc/SMASH-2.0.1/SP_v2_photons_total.txt")
 pT_smash_lhc, v2_tot_lhc, v2_tot_err_lhc = raw.T
-raw=np.loadtxt("../calcs/photons/smash_calcs/lhc/high_stats/SP_v2_photons_2to2.txt")
+raw=np.loadtxt("../calcs/photons/smash_calcs/lhc/SMASH-2.0.1/SP_v2_photons_2to2.txt")
 pT_smash_22_lhc, v2_22_lhc, v2_err_22_lhc = raw.T
-raw=np.loadtxt("../calcs/photons/smash_calcs/lhc/high_stats/SP_v2_photons_Brems.txt")
+raw=np.loadtxt("../calcs/photons/smash_calcs/lhc/SMASH-2.0.1/SP_v2_photons_Brems.txt")
 pT_smash_brem_lhc, v2_brem_lhc, v2_err_brem_lhc = raw.T
 
 # Hydro RHIC
@@ -211,6 +211,7 @@ ax6.set_yticklabels([])
 plt.xlabel(r'p$_\mathsf{T}$ [GeV]')
 # plt.figtext(0.93, 0.36, 'Total', fontweight = 'bold')
 
+plt.figtext(0.877, 0.927, "SMASH-2.0.1",color = "gray", fontsize = 6.3)
 plt.tight_layout(h_pad=-0.2, w_pad=-3.6)
 plt.savefig("v2.pdf")
 plt.close()

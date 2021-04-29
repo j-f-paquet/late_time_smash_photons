@@ -15,7 +15,7 @@ import common_plotting
 ######################################
 
 # SMASH RHIC
-raw=np.loadtxt("../calcs/photons/smash_calcs/rhic/pT_photons_midy.txt")
+raw=np.loadtxt("../calcs/photons/smash_calcs/rhic/SMASH-2.0.1/pT_photons_midy.txt")
 pT_smash_rhic, pre_dN_22_rhic, pre_dN_22_err_rhic, pre_dN_brem_rhic, pre_dN_brem_err_rhic = raw.T
 dN_22_rhic=pre_dN_22_rhic/(2*np.pi*pT_smash_rhic)
 dN_22_err_rhic=pre_dN_22_err_rhic/(2*np.pi*pT_smash_rhic)
@@ -47,7 +47,7 @@ music_above_rebin_music120_rhic = np.exp(music_above_interpolation_rhic(pT_above
 
 
 # SMASH LHC
-raw=np.loadtxt("../calcs/photons/smash_calcs/lhc/low_stats/pT_photons_midy.txt")
+raw=np.loadtxt("../calcs/photons/smash_calcs/lhc/SMASH-2.0.1/pT_photons_midy.txt")
 pT_smash_lhc, pre_dN_22_lhc, pre_dN_22_err_lhc, pre_dN_brem_lhc, pre_dN_brem_err_lhc = raw.T
 dN_22_lhc=pre_dN_22_lhc/(2*np.pi*pT_smash_lhc)
 dN_22_err_lhc=pre_dN_22_err_lhc/(2*np.pi*pT_smash_lhc)
@@ -82,10 +82,10 @@ music_above_rebin_music120_lhc = np.exp(music_above_interpolation_lhc(pT_above_p
 # Ration plot 120 < T < 150
 ####################################
 
-gs = gridspec.GridSpec(10,11)
+gs = gridspec.GridSpec(10,9)
 
 common_plotting.load_plotting_style_paper()
-plt.subplot(gs[:6 , 1:6])
+plt.subplot(gs[:6 , 1:5])
 # RHIC
 plt.xscale('linear')
 plt.yscale('log')
@@ -100,7 +100,7 @@ plt.plot(pT_above_plus_smash_rhic, dN_music_above_plus_smash_rhic, ls = '--', la
 plt.fill_between(pT_above_plus_hydro120_rhic, dN_music_above_plus_hydro140_rhic, dN_music_above_plus_hydro120_rhic, alpha = 1.0, label = 'MUSIC$_\mathsf{T > 150 \ MeV}$ + MUSIC$_\mathsf{T \leq 150 \ MeV}$', lw = 0, color='C0')
 plt.legend(frameon=False)
 
-plt.subplot(gs[6:, 1:6])
+plt.subplot(gs[6:, 1:5])
 plt.xlim(0.2,2.6)
 plt.ylim(0.98, 1.5)
 plt.xlabel(r'p$_\mathsf{T}$ [GeV]')
@@ -110,10 +110,10 @@ plt.axhline(1.0, ls = ':', color = 'C1')
 plt.fill_between(pT_above_plus_hydro120_rhic[:14], dN_music_above_plus_hydro120_rhic[:14] / music_above_rebin_music120_rhic, dN_music_above_plus_hydro140_rhic[:14] / music_above_rebin_music140_rhic, label = '(MUSIC$_\mathsf{T > 150 \ MeV}$ + MUSIC$_\mathsf{T \leq 150 \ MeV}$) / MUSIC$_\mathsf{T > 150 \ MeV}$', alpha = 1.0, color = 'C0', lw = 0)
 
 plt.legend(frameon=False, fontsize = 7.5)
-plt.figtext(0.115, 0.51, 'Au + Au\n' + r'$\mathbf{\sqrt{s}}$ = 200 GeV', fontweight = 'bold')
+plt.figtext(0.135, 0.5, 'Au + Au\n' + r'$\mathbf{\sqrt{s}}$ = 200 GeV', fontweight = 'bold')
 
 # LHC
-plt.subplot(gs[:6 , 6:])
+plt.subplot(gs[:6 , 5:])
 plt.xscale('linear')
 plt.yscale('log')
 plt.xticks([])
@@ -128,7 +128,7 @@ plt.plot(pT_above_plus_smash_lhc, dN_music_above_plus_smash_lhc, ls = '--', labe
 plt.fill_between(pT_above_plus_hydro120_lhc, dN_music_above_plus_hydro140_lhc, dN_music_above_plus_hydro120_lhc, alpha = 1.0, label = 'MUSIC$_\mathsf{T > 150 \ MeV}$ + MUSIC$_\mathsf{T \leq 150 \ MeV}$', lw = 0, color='C0')
 plt.legend(frameon=False, loc = 'upper right')
 
-plt.subplot(gs[6:, 6:])
+plt.subplot(gs[6:, 5:])
 plt.xlim(0.2,2.6)
 plt.xlabel(r'p$_\mathsf{T}$ [GeV]')
 plt.yticks([])
@@ -140,8 +140,9 @@ plt.axhline(1.0, ls = ':', color = 'C1')
 plt.fill_between(pT_above_plus_hydro120_lhc[:14], dN_music_above_plus_hydro120_lhc[:14] / music_above_rebin_music120_lhc, dN_music_above_plus_hydro140_lhc[:14] / music_above_rebin_music140_lhc, label = '(MUSIC$_\mathsf{T > 150 \ MeV}$+ MUSIC$_\mathsf{T \leq 150 \ MeV}$ / MUSIC$_\mathsf{T > 150 \ MeV}$', alpha = 1.0, color = 'C0', lw = 0)
 
 plt.legend(frameon=False, loc = 'upper right', fontsize = 7.5)
-plt.figtext(0.56, 0.51, 'Pb + Pb\n' + r'$\mathbf{\sqrt{s}}$ = 2.76 TeV', fontweight = 'bold')
+plt.figtext(0.57, 0.5, 'Pb + Pb\n' + r'$\mathbf{\sqrt{s}}$ = 2.76 TeV', fontweight = 'bold')
 
-plt.tight_layout(w_pad=-5.7, h_pad=-0.5)
+plt.figtext(0.921, 0.975, "SMASH-2.0.1",color = "gray", fontsize = 5.3)
+plt.tight_layout(w_pad=-6.0, h_pad=-0.5)
 plt.savefig("spectra_sum.pdf")
 plt.close()
