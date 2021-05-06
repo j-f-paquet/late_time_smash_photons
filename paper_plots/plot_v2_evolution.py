@@ -56,11 +56,11 @@ def plot_v2_photons(v2_1, v2_2, v2_3, v2_5, v2_10, v2_20, v2_50, v2_end, output_
     # 2to2 Scatterings
     plt.subplot(131)
     plt.title(r'2$\leftrightarrow$2 Scatterings')
-    plt.plot(v2data_2to2_1[0], 100.0*v2data_2to2_1[1], label = r't $\leq$ 1 fm', color = colors[5], ls = '--')
-    plt.plot(v2data_2to2_2[0], 100.0*v2data_2to2_2[1], label = r't $\leq$ 2 fm', color = colors[4], ls = '-')
-    plt.plot(v2data_2to2_3[0], 100.0*v2data_2to2_3[1], label = r't $\leq$ 3 fm', color = colors[3], ls = ':')
-    plt.plot(v2data_2to2_5[0], 100.0*v2data_2to2_5[1], label = r't $\leq$ 5 fm', color = colors[2], ls = '-.')
-    plt.plot(v2data_2to2_10[0], 100.0*v2data_2to2_10[1], label = r't $\leq$ 10 fm', color = colors[1], ls = '--')
+    plt.plot(v2data_2to2_1[0], 100.0*v2data_2to2_1[1], label = r't $\leq$ 1.4 fm', color = colors[5], ls = '--')
+    plt.plot(v2data_2to2_2[0], 100.0*v2data_2to2_2[1], label = r't $\leq$ 2.4 fm', color = colors[4], ls = '-')
+    plt.plot(v2data_2to2_3[0], 100.0*v2data_2to2_3[1], label = r't $\leq$ 3.4 fm', color = colors[3], ls = ':')
+    plt.plot(v2data_2to2_5[0], 100.0*v2data_2to2_5[1], label = r't $\leq$ 5.4 fm', color = colors[2], ls = '-.')
+    plt.plot(v2data_2to2_10[0], 100.0*v2data_2to2_10[1], label = r't $\leq$ 10.4 fm', color = colors[1], ls = '--')
     plt.plot(v2data_2to2_end[0], 100.0*v2data_2to2_end[1], label = r't $\leq$ endtime', color = colors[0], ls = '-')
 
     plt.fill_between(v2data_2to2_1[0], 100.0*v2data_2to2_1[1] - (100.0*v2data_2to2_1[2]), 100.0*v2data_2to2_1[1] + (100.0*v2data_2to2_1[2]), alpha = 0.3, lw = 0, color = colors[5])

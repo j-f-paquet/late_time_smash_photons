@@ -73,7 +73,9 @@ plt.xscale('linear')
 plt.xlim(0,4)
 plt.ylim(0,1.08)
 plt.xlabel(r'p$_\mathsf{T}$ [GeV]')
-plt.ylabel(r'$\frac{\mathsf{dN}_\gamma^{2\leftrightarrow2}/\mathsf{d}p_\mathrm{T} |_{\mathsf{y} =0}}{\mathsf{dN}_\gamma^{2\leftrightarrow2}/\mathsf{d}p_\mathrm{T} |_{\mathsf{y} =0} \ + \ \mathsf{dN}_\gamma^{\mathsf{Brems}}/\mathsf{d}p_\mathrm{T} |_{\mathsf{y} =0}}$')
+plt.ylabel(r'Fraction of late-stage photons' + '\n' + 'from 2$\leftrightarrow$2 scatterings', fontsize = 13)
+# plt.ylabel(r'Fraction of photons from 2$\leftrightarrow$2 scatterings')
+# plt.ylabel(r'$\frac{\mathsf{dN}_\gamma^{2\leftrightarrow2}/\mathsf{d}p_\mathrm{T} |_{\mathsf{y} =0}}{\mathsf{dN}_\gamma^{2\leftrightarrow2}/\mathsf{d}p_\mathrm{T} |_{\mathsf{y} =0} \ + \ \mathsf{dN}_\gamma^{\mathsf{Brems}}/\mathsf{d}p_\mathrm{T} |_{\mathsf{y} =0}}$')
 # SMASH
 plt.plot(pT_smash_rhic[::3], dN_22_rhic[::3] / (dN_22_rhic[::3] + dN_brem_rhic[::3]), ls = '-', label = 'SMASH', color = 'C2')
 plt.fill_between(pT_smash_rhic[::3], dN_22_rhic[::3] / (dN_22_rhic[::3] + dN_brem_rhic[::3]) - np.sqrt(dN_brem_rhic[::3]**2 * dN_22_err_rhic[::3]**2 + dN_22_rhic[::3]**2 * dN_brem_err_rhic[::3]**2) / (dN_22_rhic[::3] + dN_brem_rhic[::3])**2, dN_22_rhic[::3] / (dN_22_rhic[::3] + dN_brem_rhic[::3]) + np.sqrt(dN_brem_rhic[::3]**2 * dN_22_err_rhic[::3]**2 + dN_22_rhic[::3]**2 * dN_brem_err_rhic[::3]**2) / (dN_22_rhic[::3] + dN_brem_rhic[::3])**2, alpha = 0.5 , color = 'C2', lw = 0)
@@ -82,6 +84,7 @@ plt.fill_between(pT_music_rhic, dN_music_140_150_22_rhic / (dN_music_140_150_22_
 
 plt.legend(frameon=False, loc = 'upper left')
 plt.figtext(0.405, 0.205, '         Au + Au\n' + r'$\mathbf{\sqrt{s}}$ = 200 GeV', fontweight = 'bold')
+plt.xticks([0,1,2,3,4])
 
 # LHC
 plt.subplot(gs[: , 5:])
@@ -103,6 +106,6 @@ plt.figtext(0.827, 0.205, '           Pb + Pb\n' + r' $\mathbf{\sqrt{s}}$ = 2.76
 plt.xticks([0,1,2,3,4])
 
 plt.figtext(0.917, 0.965, "SMASH-2.0.1", color = "gray", fontsize = 5.3)
-plt.tight_layout(w_pad=-5.4)
+plt.tight_layout(w_pad=-5.3)
 plt.savefig("ratio_spectra.pdf")
 plt.close()
