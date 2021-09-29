@@ -8,11 +8,11 @@ sys.path.append(os.path.dirname(os.path.abspath(__file__)) + '/../..')
 import common_plotting
 import matplotlib.ticker
 
-data_pT_0_1 = np.loadtxt('../../calcs/photons/smash_calcs/rhic/Photon_dNdt_pT_0_1_midy.txt', unpack = True)
-data_pT_1_2 = np.loadtxt('../../calcs/photons/smash_calcs/rhic/Photon_dNdt_pT_1_2_midy.txt', unpack = True)
-data_pT_2_3 = np.loadtxt('../../calcs/photons/smash_calcs/rhic/Photon_dNdt_pT_2_3_midy.txt', unpack = True)
-data_pT_3_4 = np.loadtxt('../../calcs/photons/smash_calcs/rhic/Photon_dNdt_pT_3_4_midy.txt', unpack = True)
-data_pT_4_inf = np.loadtxt('../../calcs/photons/smash_calcs/rhic/Photon_dNdt_pT_4_inf_midy.txt', unpack = True)
+data_pT_0_1 = np.loadtxt('../../calcs/photons/smash_calcs/rhic/SMASH-2.0.1-fix/Photon_dNdt_pT_0_1_midy.txt', unpack = True)
+data_pT_1_2 = np.loadtxt('../../calcs/photons/smash_calcs/rhic/SMASH-2.0.1-fix/Photon_dNdt_pT_1_2_midy.txt', unpack = True)
+data_pT_2_3 = np.loadtxt('../../calcs/photons/smash_calcs/rhic/SMASH-2.0.1-fix/Photon_dNdt_pT_2_3_midy.txt', unpack = True)
+data_pT_3_4 = np.loadtxt('../../calcs/photons/smash_calcs/rhic/SMASH-2.0.1-fix/Photon_dNdt_pT_3_4_midy.txt', unpack = True)
+data_pT_4_inf = np.loadtxt('../../calcs/photons/smash_calcs/rhic/SMASH-2.0.1-fix/Photon_dNdt_pT_4_inf_midy.txt', unpack = True)
 
 common_plotting.load_plotting_style()
 cols = sns.color_palette("rocket", 5)
@@ -56,3 +56,66 @@ plt.ylabel('dN/dt [1/fm]')
 plt.tight_layout()
 plt.savefig('dN_dt_with_pT_cuts.pdf')
 plt.close()
+
+##################################
+
+tot_2to2 = data_pT_0_1[1] + data_pT_1_2[1] + data_pT_2_3[1] + data_pT_3_4[1] + data_pT_4_inf[1]
+tot_brems = data_pT_0_1[3] + data_pT_1_2[3] + data_pT_2_3[3] + data_pT_3_4[3] + data_pT_4_inf[3]
+tot_total = tot_2to2 + tot_brems
+
+plt.figure(figsize=(6,3))
+plt.subplot(121)
+plt.plot(data_pT_0_1[0], tot_2to2, label = r'2$\leftrightarrow$2 Scatterings', ls = '--')
+plt.plot(data_pT_0_1[0], tot_brems, label = r'Bremsstrahlung', ls = '-.')
+plt.yscale('log')
+plt.legend()
+plt.xlabel('t [fm]')
+plt.ylabel(r'dN$_\gamma$|$_{\mathrm{y=0}}$/dt')
+
+plt.subplot(122)
+plt.plot(data_pT_0_1[0], tot_2to2/tot_total, label = r'2$\leftrightarrow$2 Scatterings', ls = '--')
+plt.plot(data_pT_0_1[0], tot_brems/tot_total, label = r'Bremsstrahlung', ls = '-.')
+plt.legend()
+plt.xlabel('t [fm]')
+plt.ylabel(r'Contribution')
+
+plt.tight_layout()
+plt.savefig('dN_dt_tot.pdf')
+plt.close()
+
+print (tot_2to2/tot_total)
+print (tot_brems/tot_total)
+
+
+##################################
+# integrated version
+bin_width = data_pT_0_1[0][1]-data_pT_0_1[0][0]
+print (bin_width)
+
+plt.figure(figsize=(6,3))
+plt.subplot(121)
+plt.plot(data_pT_0_1[0], bin_width * np.cumsum(tot_2to2), ls = '--', label = r'2$\leftrightarrow$2 Scatterings')
+plt.plot(data_pT_0_1[0], bin_width * np.cumsum(tot_brems), ls = '-.', label = r'Bremsstrahlung')
+plt.plot(data_pT_0_1[0], bin_width * (np.cumsum(tot_2to2) + np.cumsum(tot_brems)), ls = '-', label = r'Total')
+# plt.yscale('log')
+plt.legend()
+plt.xlabel('t [fm]')
+plt.ylabel(r'N$_\gamma$|$_{\mathrm{y=0}}$')
+plt.xlim(0, 200)
+
+plt.subplot(122)
+plt.plot(data_pT_0_1[0], np.cumsum(tot_2to2)/np.cumsum(tot_total), ls = '--', label = r'2$\leftrightarrow$2 Scatterings')
+plt.plot(data_pT_0_1[0], np.cumsum(tot_brems)/np.cumsum(tot_total), ls = '-.',  label = r'Bremsstrahlung')
+#plt.plot(data_pT_0_1[0], np.cumsum(tot_total)/np.cumsum(tot_total))
+plt.legend()
+plt.xlabel('t [fm]')
+plt.ylabel(r'Contribution')
+plt.xlim(0, 200)
+plt.ylim(0,1.02)
+
+plt.tight_layout()
+plt.savefig('dN_dt_tot_integrated.pdf')
+plt.close()
+
+print (np.mean(np.cumsum(tot_2to2)/np.cumsum(tot_total)))
+print (np.mean(np.cumsum(tot_brems)/np.cumsum(tot_total)))
