@@ -111,6 +111,9 @@ plot_dict_lhc={
 
 box = dict(facecolor='white', edgecolor='black', linewidth=0.8)
 
+y_lower_lim = 0.5
+y_upper_lim = 2.5
+
 gs = gridspec.GridSpec(9,11)
 common_plotting.load_plotting_style_paper()
 #Make this figure higher than the others and adjust fonts, for readability
@@ -120,17 +123,19 @@ mpl.rcParams['figure.figsize'] = 10*0.6, 5.3*0.8*1.6
 plt.figure()
 
 # RHIC
-
 ax1 = plt.subplot(gs[:3 , 1:6])
 plt.title(r'Au + Au @ $\sqrt{s}$ = 200 GeV')
 smash_calc=plot_dict_rhic['late_22']['smash_calcs']
-plt.plot(smash_calc[0], 100.0 * smash_calc[1], color = 'C2', label = 'SMASH', ls = '-')
-plt.fill_between(smash_calc[0], 100.0 * (smash_calc[1] - smash_calc[2]), 100.0 * (smash_calc[1] + smash_calc[2]), alpha = 0.5, color = 'C2', lw = 0)
+# plt.plot(smash_calc[0], 100.0 * smash_calc[1], color = 'C2', label = 'SMASH', ls = '-')
+# plt.fill_between(smash_calc[0], 100.0 * (smash_calc[1] - smash_calc[2]), 100.0 * (smash_calc[1] + smash_calc[2]), alpha = 0.5, color = 'C2', lw = 0)
 music_calc=plot_dict_rhic['late_22']['music_calcs_short']
-plt.fill_between(music_calc[0], 100.0 * music_calc[1], 100.0 * music_calc[2], alpha=1.0, color = 'C0', label = 'MUSIC$_\mathsf{T \leq 150 \ MeV}$', lw = 2.0)
-plt.legend(frameon = False, loc = 'upper left')
+plt.plot(music_calc[0], smash_calc[1]/((music_calc[1]+music_calc[2])*0.5), alpha=1.0, color = 'C2', label = 'MUSIC mean', lw = 2.0, ls = '--')
+plt.fill_between(music_calc[0], smash_calc[1]/music_calc[1], smash_calc[1]/music_calc[2], alpha=0.5, color = 'C2', label = 'MUSIC range', lw = 0)
+
+
+plt.legend(frameon = False, loc = 'lower right')
 plt.xlim(0,2.6)
-plt.ylim(-2,20.0)
+plt.ylim(y_lower_lim, y_upper_lim)
 plt.xticks([])
 # plt.yticks([0,5,10,15,20,25])
 # ax1.minorticks_on()
@@ -138,30 +143,29 @@ plt.figtext(0.435, 0.91725, '2$\leftrightarrow$2 Scatterings', fontweight = 'bol
 
 ax2 = plt.subplot(gs[3:6 , 1:6])
 smash_calc=plot_dict_rhic['late_brem']['smash_calcs']
-plt.plot(smash_calc[0], 100.0 * smash_calc[1], color = 'C2', label = 'SMASH', ls = '-')
-plt.fill_between(smash_calc[0], 100.0 * (smash_calc[1] - smash_calc[2]), 100.0 * (smash_calc[1] + smash_calc[2]), alpha = 0.5, color = 'C2', lw = 0)
 music_calc=plot_dict_rhic['late_brem']['music_calcs_short']
-plt.fill_between(music_calc[0], 100.0 * music_calc[1], 100.0 * music_calc[2], alpha=1.0, color = 'C0', label = 'MUSIC$_\mathsf{T \leq 150 \ MeV}$', lw = 2.0)
-# plt.legend(frameon = False, loc = 'upper left')
+plt.plot(music_calc[0], smash_calc[1]/((music_calc[1]+music_calc[2])*0.5), alpha=1.0, color = 'C1', label = 'MUSIC mean', lw = 2.0, ls = ':')
+plt.fill_between(music_calc[0], smash_calc[1]/music_calc[1], smash_calc[1]/music_calc[2], alpha=0.5, color = 'C1', label = 'MUSIC range', lw = 0)
+
+plt.legend(frameon = False, loc = 'lower right')
 plt.xlim(0,2.6)
-plt.ylim(0,20.0)
+plt.ylim(y_lower_lim, y_upper_lim)
 plt.xticks([])
 # plt.yticks([0,5,10,15,20,25])
 # ax2.minorticks_on()
-plt.ylabel(r'v$_2^{\gamma, \mathsf{SP}}$ [%]')
+plt.ylabel(r'v$_{2 \quad \mathsf{SMASH}}^{\gamma, \mathsf{SP}}$ / v$_{2 \quad \mathsf{MUSIC}}^{\gamma, \mathsf{SP}}$ ')
 plt.figtext(0.445, 0.6316, 'Bremsstrahlung', fontweight = 'bold', bbox=box)
 
 ax3 = plt.subplot(gs[6:9 , 1:6])
 smash_calc=plot_dict_rhic['late_tot']['smash_calcs']
-plt.plot(smash_calc[0], 100.0 * smash_calc[1], color = 'C2', label = 'SMASH', ls = '-')
-plt.fill_between(smash_calc[0], 100.0 * (smash_calc[1] - smash_calc[2]), 100.0 * (smash_calc[1] + smash_calc[2]), alpha = 0.5, color = 'C2', lw = 0)
 music_calc=plot_dict_rhic['late_tot']['music_calcs_short']
-plt.fill_between(music_calc[0], 100.0 * music_calc[1], 100.0 * music_calc[2], alpha=1.0, color = 'C0', label = 'MUSIC$_\mathsf{T \leq 150 \ MeV}$', lw = 2.0)
-# plt.legend(frameon = False, loc = 'upper left')
+plt.plot(music_calc[0], smash_calc[1]/((music_calc[1]+music_calc[2])*0.5), alpha=1.0, color = 'C0', label = 'MUSIC mean', lw = 2.0)
+plt.fill_between(music_calc[0], smash_calc[1]/music_calc[1], smash_calc[1]/music_calc[2], alpha=0.5, color = 'C0', label = 'MUSIC range', lw = 0)
 plt.xlim(0,2.6)
-plt.ylim(0,20.0)
+plt.ylim(y_lower_lim, y_upper_lim)
 # plt.yticks([0,5,10,15,20,25])
 # ax3.minorticks_on()
+plt.legend(frameon = False, loc = 'lower right')
 plt.xlabel(r'p$_\mathsf{T}$ [GeV]')
 plt.figtext(0.51, 0.3452, 'Total', fontweight = 'bold', bbox=box)
 
@@ -170,13 +174,11 @@ plt.figtext(0.51, 0.3452, 'Total', fontweight = 'bold', bbox=box)
 ax4 = plt.subplot(gs[:3 , 6:])
 plt.title(r'Pb + Pb @ $\sqrt{s}$ = 2.76 TeV')
 smash_calc=plot_dict_lhc['late_22']['smash_calcs']
-plt.plot(smash_calc[0], 100.0 * smash_calc[1], color = 'C2', label = 'SMASH', ls = '-')
-plt.fill_between(smash_calc[0], 100.0 * (smash_calc[1] - smash_calc[2]), 100.0 * (smash_calc[1] + smash_calc[2]), alpha = 0.5, color = 'C2', lw = 0)
 music_calc=plot_dict_lhc['late_22']['music_calcs_short']
-plt.fill_between(music_calc[0], 100.0 * music_calc[1], 100.0 * music_calc[2], alpha=1.0, color = 'C0', label = 'MUSIC$_\mathsf{T \leq 150 \ MeV}$', lw = 2.0)
-# plt.legend(frameon = False, loc = 'upper left')
+plt.plot(music_calc[0], smash_calc[1]/((music_calc[1]+music_calc[2])*0.5), alpha=1.0, color = 'C2', label = 'MUSIC mean', lw = 2.0, ls = '--')
+plt.fill_between(music_calc[0], smash_calc[1]/music_calc[1], smash_calc[1]/music_calc[2], alpha=0.5, color = 'C2', label = 'MUSIC range', lw = 0)
 plt.xlim(0,2.6)
-plt.ylim(-2,20.0)
+plt.ylim(y_lower_lim, y_upper_lim)
 plt.xticks([])
 # plt.yticks([0,5,10,15,20,25])
 ax4.set_yticklabels([])
@@ -184,13 +186,11 @@ ax4.set_yticklabels([])
 
 ax5 = plt.subplot(gs[3:6 , 6:])
 smash_calc=plot_dict_lhc['late_brem']['smash_calcs']
-plt.plot(smash_calc[0], 100.0 * smash_calc[1], color = 'C2', label = 'SMASH', ls = '-')
-plt.fill_between(smash_calc[0], 100.0 * (smash_calc[1] - smash_calc[2]), 100.0 * (smash_calc[1] + smash_calc[2]), alpha = 0.5, color = 'C2', lw = 0)
 music_calc=plot_dict_lhc['late_brem']['music_calcs_short']
-plt.fill_between(music_calc[0], 100.0 * music_calc[1], 100.0 * music_calc[2], alpha=1.0, color = 'C0', label = 'MUSIC$_\mathsf{T \leq 150 \ MeV}$', lw = 2.0)
-# plt.legend(frameon = False, loc = 'upper left')
+plt.plot(music_calc[0], smash_calc[1]/((music_calc[1]+music_calc[2])*0.5), alpha=1.0, color = 'C1', label = 'MUSIC mean', lw = 2.0, ls = ':')
+plt.fill_between(music_calc[0], smash_calc[1]/music_calc[1], smash_calc[1]/music_calc[2], alpha=0.5, color = 'C1', label = 'MUSIC range', lw = 0)
 plt.xlim(0,2.6)
-plt.ylim(0,20.0)
+plt.ylim(y_lower_lim, y_upper_lim)
 plt.xticks([])
 # plt.yticks([0,5,10,15,20,25])
 ax5.set_yticklabels([])
@@ -198,13 +198,11 @@ ax5.set_yticklabels([])
 
 ax6 = plt.subplot(gs[6:9 , 6:])
 smash_calc=plot_dict_lhc['late_tot']['smash_calcs']
-plt.plot(smash_calc[0], 100.0 * smash_calc[1], color = 'C2', label = 'SMASH', ls = '-')
-plt.fill_between(smash_calc[0], 100.0 * (smash_calc[1] - smash_calc[2]), 100.0 * (smash_calc[1] + smash_calc[2]), alpha = 0.5, color = 'C2', lw = 0)
 music_calc=plot_dict_lhc['late_tot']['music_calcs_short']
-plt.fill_between(music_calc[0], 100.0 * music_calc[1], 100.0 * music_calc[2], alpha=1.0, color = 'C0', label = 'MUSIC$_\mathsf{T \leq 150 \ MeV}$', lw = 2.0)
-# plt.legend(frameon = False, loc = 'upper left')
+plt.plot(music_calc[0], smash_calc[1]/((music_calc[1]+music_calc[2])*0.5), alpha=1.0, color = 'C0', label = 'MUSIC mean', lw = 2.0)
+plt.fill_between(music_calc[0], smash_calc[1]/music_calc[1], smash_calc[1]/music_calc[2], alpha=0.5, color = 'C0', label = 'MUSIC range', lw = 0)
 plt.xlim(0,2.6)
-plt.ylim(0,20.0)
+plt.ylim(y_lower_lim, y_upper_lim)
 # plt.yticks([])
 # plt.yticks([0,5,10,15,20,25])
 ax6.set_yticklabels([])
@@ -212,6 +210,6 @@ plt.xlabel(r'p$_\mathsf{T}$ [GeV]')
 # plt.figtext(0.93, 0.36, 'Total', fontweight = 'bold')
 
 plt.figtext(0.79, 0.927, "SMASH-2.0.1-1-g397f8f0",color = "gray", fontsize = 6.3)
-plt.tight_layout(h_pad=-0.2, w_pad=-3.6)
-plt.savefig("v2.pdf")
+plt.tight_layout(h_pad=-0.2, w_pad=-4.6)
+plt.savefig("v2_ratio.pdf")
 plt.close()
