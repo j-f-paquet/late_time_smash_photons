@@ -15,7 +15,7 @@ import common_plotting
 ######################################
 
 # SMASH RHIC
-raw=np.loadtxt("../calcs/photons/smash_calcs/rhic/SMASH-2.0.1/pT_photons_midy.txt")
+raw=np.loadtxt("../calcs/photons/smash_calcs/rhic/SMASH-2.0.1-fix/pT_photons_midy.txt")
 pT_smash_rhic, pre_dN_22_rhic, pre_dN_22_err_rhic, pre_dN_brem_rhic, pre_dN_brem_err_rhic = raw.T
 dN_22_rhic=pre_dN_22_rhic/(2*np.pi*pT_smash_rhic)
 dN_22_err_rhic=pre_dN_22_err_rhic/(2*np.pi*pT_smash_rhic)
@@ -47,7 +47,7 @@ music_above_rebin_music120_rhic = np.exp(music_above_interpolation_rhic(pT_above
 
 
 # SMASH LHC
-raw=np.loadtxt("../calcs/photons/smash_calcs/lhc/SMASH-2.0.1/pT_photons_midy.txt")
+raw=np.loadtxt("../calcs/photons/smash_calcs/lhc/SMASH-2.0.1-fix/pT_photons_midy.txt")
 pT_smash_lhc, pre_dN_22_lhc, pre_dN_22_err_lhc, pre_dN_brem_lhc, pre_dN_brem_err_lhc = raw.T
 dN_22_lhc=pre_dN_22_lhc/(2*np.pi*pT_smash_lhc)
 dN_22_err_lhc=pre_dN_22_err_lhc/(2*np.pi*pT_smash_lhc)
@@ -142,7 +142,7 @@ plt.fill_between(pT_above_plus_hydro120_lhc[:14], dN_music_above_plus_hydro120_l
 plt.legend(frameon=False, loc = 'upper right', fontsize = 7.5)
 plt.figtext(0.57, 0.5, 'Pb + Pb\n' + r'$\mathbf{\sqrt{s}}$ = 2.76 TeV', fontweight = 'bold')
 
-plt.figtext(0.921, 0.975, "SMASH-2.0.1",color = "gray", fontsize = 5.3)
+plt.figtext(0.866, 0.975, "SMASH-2.0.1-1-g397f8f0",color = "gray", fontsize = 5.3)
 plt.tight_layout(w_pad=-6.0, h_pad=-0.5)
 plt.savefig("spectra_sum.pdf")
 plt.close()

@@ -22,8 +22,8 @@ result_dict['smash']={
 #    filename:"../../photon_calcs/smash_calcs/rhic/SP_v2_photons_2to2.txt",
 #},
 'tot':{
-    'filename_v2':"../../smash_calcs/rhic/SMASH-2.0.1/SP_v2_photons_total.txt",
-    'filename_spectra':"../../smash_calcs/rhic/SMASH-2.0.1/pT_photons_midy.txt",
+    'filename_v2':"../../smash_calcs/rhic/SMASH-2.0.1-fix/SP_v2_photons_total.txt",
+    'filename_spectra':"../../smash_calcs/rhic/SMASH-2.0.1-fix/pT_photons_midy.txt",
 },
 }
 result_dict['hydro']={

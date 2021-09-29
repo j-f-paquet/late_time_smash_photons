@@ -23,8 +23,8 @@ result_dict['smash']={
 #},
 'tot':{
 #../../smash_calcs/lhc/low_stats/
-    'filename_v2':"../../smash_calcs/lhc/SMASH-2.0.1/SP_v2_photons_total.txt",
-    'filename_spectra':"../../smash_calcs/lhc/SMASH-2.0.1/pT_photons_midy.txt",
+    'filename_v2':"../../smash_calcs/lhc/SMASH-2.0.1-fix/SP_v2_photons_total.txt",
+    'filename_spectra':"../../smash_calcs/lhc/SMASH-2.0.1-fix/pT_photons_midy.txt",
     #'filename_v2':"../../photon_calcs/smash_calcs/rhic/SP_v2_photons_total.txt",
     #'filename_spectra':"../../photon_calcs/smash_calcs/rhic/pT_photons_midy.txt",
 },

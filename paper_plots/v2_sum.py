@@ -90,7 +90,7 @@ plt.fill_between(pT_above_plus_hydro140_lhc,  100.0 * v2_music_above_plus_hydro1
 plt.legend(frameon = False, loc = 'upper left')
 plt.figtext(0.82, 0.17, '           Pb + Pb\n' + r' $\mathbf{\sqrt{s}}$ = 2.76 TeV', fontweight = 'bold')
 
-plt.figtext(0.911, 0.962, "SMASH-2.0.1",color = "gray", fontsize = 5.3)
+plt.figtext(0.857, 0.962, "SMASH-2.0.1-1-g397f8f0",color = "gray", fontsize = 5.3)
 plt.tight_layout(w_pad=-6.4, h_pad=-0.5)
 plt.savefig("v2_sum.pdf")
 plt.close()

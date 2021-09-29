@@ -98,7 +98,7 @@ plt.ylim(0.0,2.0)
 plt.xlabel(r'E [GeV]')
 plt.legend(loc='upper left', frameon=False)
 
-plt.figtext(0.882, 0.944, "SMASH-2.0.1",color = "gray", fontsize = 4.2)
+plt.figtext(0.818, 0.944, "SMASH-2.0.1-1-g397f8f0",color = "gray", fontsize = 4.2)
 plt.tight_layout(h_pad = -0.5)
 plt.savefig("thermal_photon_comparison.pdf")
 plt.close()

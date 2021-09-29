@@ -1,0 +1,3 @@
+# integrated v2 already divided by Nevents
+# t 	v2_int (2to2) 	v2_int_error (2to2) 	v2_int (brems) 	v2_int_error (brems) 	v2_int (tot) 	v2_int_error (tot) 
+10000	0.0156526660956	0.00034856484245	0.0515685778428	0.000216192826397	0.050796073017	0.000210514005144

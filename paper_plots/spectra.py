@@ -15,7 +15,7 @@ import matplotlib.gridspec as gridspec
 ######################################
 
 # SMASH RHIC
-raw=np.loadtxt("../calcs/photons/smash_calcs/rhic/SMASH-2.0.1/pT_photons_midy.txt")
+raw=np.loadtxt("../calcs/photons/smash_calcs/rhic/SMASH-2.0.1-fix/pT_photons_midy.txt")
 pT_smash_rhic, pre_dN_22_rhic, pre_dN_22_err_rhic, pre_dN_brem_rhic, pre_dN_brem_err_rhic = raw.T
 dN_22_rhic=pre_dN_22_rhic/(2*np.pi*pT_smash_rhic)
 dN_22_err_rhic=pre_dN_22_err_rhic/(2*np.pi*pT_smash_rhic)
@@ -40,7 +40,7 @@ pT_music_rhic, dN_music_120_150_brem_rhic, *rest = raw.T
 
 
 # SMASH LHC
-raw=np.loadtxt("../calcs/photons/smash_calcs/lhc/SMASH-2.0.1/pT_photons_midy.txt")
+raw=np.loadtxt("../calcs/photons/smash_calcs/lhc/SMASH-2.0.1-fix/pT_photons_midy.txt")
 pT_smash_lhc, pre_dN_22_lhc, pre_dN_22_err_lhc, pre_dN_brem_lhc, pre_dN_brem_err_lhc = raw.T
 dN_22_lhc=pre_dN_22_lhc/(2*np.pi*pT_smash_lhc)
 dN_22_err_lhc=pre_dN_22_err_lhc/(2*np.pi*pT_smash_lhc)
@@ -144,7 +144,7 @@ plt.figtext(0.57, 0.16, 'Pb + Pb\n' + r'$\mathbf{\sqrt{s}}$ = 2.76 TeV', fontwei
 plt.xticks([0,1,2,3,4])
 # plt.figtext(0.57, 0.19, '       Pb + Pb\n' + r'$\mathbf{\sqrt{s}}$ = 2760.0 GeV', fontweight = 'bold')
 
-plt.figtext(0.917, 0.96, "SMASH-2.0.1",color = "gray", fontsize = 5.3)
+plt.figtext(0.862, 0.96, "SMASH-2.0.1-1-g397f8f0",color = "gray", fontsize = 5.3)
 plt.tight_layout(w_pad=-5.5)
 plt.savefig("spectra.pdf")
 plt.close()
