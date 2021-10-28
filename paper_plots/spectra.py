@@ -96,7 +96,7 @@ plt.fill_between(pT_smash_rhic[::3], dN_22_rhic[::3] + dN_brem_rhic[::3] - np.sq
 # short range: 120 MeV < T 150 MeV
 # plt.fill_between(pT_music_rhic, dN_music_140_150_22_rhic, dN_music_120_150_22_rhic, color = 'C0' , alpha=0.7, label='MUSIC$_\mathsf{T \leq 150 \ MeV}$: 2$\leftrightarrow$2 Scatterings', lw = 0)
 # plt.fill_between(pT_music_rhic, dN_music_140_150_brem_rhic, dN_music_120_150_brem_rhic , color = 'C1', alpha=0.7, label='MUSIC$_\mathsf{T \leq 150 \ MeV}$: Bremsstrahlung', lw = 0)
-plt.fill_between(pT_music_rhic, dN_music_140_150_22_rhic + dN_music_140_150_brem_rhic, dN_music_120_150_22_rhic + dN_music_120_150_brem_rhic , color = 'C0', alpha=1.0, label='MUSIC$_\mathsf{T \leq 150 \ MeV}$: Total', lw = 0)
+plt.fill_between(pT_music_rhic, dN_music_140_150_22_rhic + dN_music_140_150_brem_rhic, dN_music_120_150_22_rhic + dN_music_120_150_brem_rhic , color = 'C0', alpha=1.0, label='MUSIC$_\mathsf{T \leq 150 \ MeV}$', lw = 0)
 # plt.fill_between(pT_music_rhic, dN_music_140_150_22_rhic, dN_music_120_150_22_rhic, color = 'C0' , alpha=0.7, label='MUSIC$_\mathsf{HRG}$: 2$\leftrightarrow$2 Scatterings\n' + '120 MeV < T < 150 MeV', lw = 0)
 # plt.fill_between(pT_music_rhic, dN_music_140_150_brem_rhic, dN_music_120_150_brem_rhic , color = 'C1', alpha=0.7, label='MUSIC$_\mathsf{HRG}$: Bremsstrahlung \n' + '120 MeV < T < 150 MeV', lw = 0)
 
